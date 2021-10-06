@@ -40,6 +40,15 @@ public class ProjectileManager : MonoBehaviour
     }
     public static void Shoot(Transform _transform, string shootCode,int counter = 0)
     {
+        /*
+        if (!Datas.Shooter.ShooterMap.ContainsKey(shootCode))
+        {
+            var proj = ObjectPooler.SpawnFromPool<Projectile>(ObjectPooler.PoolingType.Projectile, _transform.position, true);
+
+            proj.SetCode("0");
+
+            return;
+        }*/
         var shooter = Datas.Shooter.ShooterMap[shootCode];
         if (shooter ==null)
         {

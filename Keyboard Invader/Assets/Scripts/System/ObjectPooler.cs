@@ -36,7 +36,7 @@ public class ObjectPooler : MonoBehaviour
 
     public enum PoolingType
     {
-        Projectile, DamageText, HitBox, DroppedItem,
+        Projectile, DamageText, HitBox, KeyCap,
     }
 
     [SerializeField] Pool[] pools;

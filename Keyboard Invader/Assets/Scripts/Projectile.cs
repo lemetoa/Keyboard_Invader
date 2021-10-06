@@ -16,6 +16,11 @@ public class Projectile : MonoBehaviour
 
     public void SetCode(string code)
     {
+        if (!Datas.Projectile.ProjectileMap.ContainsKey(code))
+        {
+            Debug.Log(code);
+            return;
+        }
         projCode = Datas.Projectile.ProjectileMap[code];
         velocity = projCode.velocity;
         duration = projCode.duration;

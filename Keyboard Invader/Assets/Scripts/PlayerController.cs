@@ -3,9 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum GameState
+{
+    MainMenu,
+    Playing,
+    Shopping,
+    Ranking,
+    Setting,    
+}
 public class PlayerController : MonoBehaviour
 {
+    public static GameState gameState { get; protected set; }
+    public GameState GetGameState()
+    {
+        return GameState.MainMenu;
+    }
+    public void SetGameState(GameState _state)
+    {
+        gameState = _state;
+    }
+
+    [SerializeField]
+    private Animator anim;
+
     public Transform player;        //플레이어 기체
+
+    public Unit playerUnit;
 
     private Camera camera;
 
@@ -19,13 +42,61 @@ public class PlayerController : MonoBehaviour
     {
         camera = Camera.main;
     }
-
     // Update is called once per frame
     void Update()
+    {
+        switch (gameState)
+        {
+            case GameState.MainMenu:
+                OnMainMenu();
+                break;
+            case GameState.Playing:
+                OnPlaying();
+                break;
+            case GameState.Shopping:
+                break;
+            case GameState.Ranking:
+                break;
+            case GameState.Setting:
+                break;
+            default:
+                break;
+        }
+
+    }
+    public void OnMainMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("Start Trigger");
+            gameState = GameState.Playing;
+            playerUnit.AddKeyCap(Vector2Int.zero);
+        }
+    }
+
+    public void OnPlaying()
     {
         Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
         player.up = mousePos - (Vector2)transform.position;
+
+        if (Input.GetMouseButton(0))
+        {
+            //Debug.Log("d");
+            //player.transform.position += ((Vector3)mousePos - player.position).normalized * Time.deltaTime;
+            playerUnit.SetMove(true);
+            playerUnit.SetTarget(mousePos);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            playerUnit.SetMove(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ProjectileManager.Shoot(keypads[3], "0");
+        }
+
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -57,5 +128,6 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+
     }
 }

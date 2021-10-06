@@ -4,14 +4,42 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    [SerializeField]
+    private float moveSpeed;
+
+    private bool isMoving = false;
+
+    private Vector2 targetPos;
+
+    public void SetTarget(Transform transform) {
+        SetTarget(transform.position);
+    }
+    public void SetTarget(Vector2 _vector)
+    {
+        targetPos = _vector;
+    }
+
+    public void SetMove(bool moving)
+    {
+        isMoving = moving;
+    }
+
     //보유중인 키패드와 위치
-    public Dictionary<Vector2Int, KeyPad> keyPads = new Dictionary<Vector2Int, KeyPad>();
+    public Dictionary<Vector2Int, KeyCap> keyPads = new Dictionary<Vector2Int, KeyCap>();
 
     //위치에 키패드 추가 및 변경
     public void AddKeyPad(Vector2Int position, Datas.KeyPadData keyPad)
     {
 
     }
+    public void AddKeyCap(Vector2Int _pos)
+    {
+        var newkey = ObjectPooler.SpawnFromPool<KeyCap>(ObjectPooler.PoolingType.KeyCap,transform.position,false);
+        newkey.transform.SetParent(transform);
+        newkey.transform.localPosition = (Vector2)_pos;
+        newkey.gameObject.SetActive(true);
+    }
+
 
     //키패드 제거
     public void RemoveKeyPad(Vector2Int position)
@@ -32,9 +60,9 @@ public class Unit : MonoBehaviour
     }
 
     //특정 알파벳에 해당하는 키패드들 반환하기
-    private List<KeyPad> GetKeybyStand(char Stand)
+    private List<KeyCap> GetKeybyStand(char Stand)
     {
-        return new List<KeyPad>();
+        return new List<KeyCap>();
     }
 
     //특정 키가 눌렸을때
@@ -54,5 +82,14 @@ public class Unit : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+
+            transform.position += (Vector3)(targetPos - (Vector2)transform.position).normalized * moveSpeed * Time.fixedDeltaTime;
+        }
     }
 }
