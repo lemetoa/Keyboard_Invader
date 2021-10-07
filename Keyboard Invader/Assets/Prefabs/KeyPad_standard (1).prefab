@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6759088032196918428}
   - component: {fileID: 6759088032196918430}
   - component: {fileID: -1850948858111490806}
+  - component: {fileID: 4923090896478258659}
   m_Layer: 0
   m_Name: KeyPad_standard (1)
   m_TagString: Untagged
@@ -95,7 +96,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1e85ec5c52f76459aef5eceef1604c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyPadCode: 
   Stand: 32
+  tmpro: {fileID: 6759088033348575512}
+--- !u!61 &4923090896478258659
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759088032196918427}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.21875, y: 0.328125, z: 0.21875, w: 0.3125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6759088033348575718
 GameObject:
   m_ObjectHideFlags: 0

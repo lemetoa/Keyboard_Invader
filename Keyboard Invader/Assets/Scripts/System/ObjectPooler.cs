@@ -36,7 +36,7 @@ public class ObjectPooler : MonoBehaviour
 
     public enum PoolingType
     {
-        Projectile, DamageText, HitBox, KeyCap,
+        Projectile, DamageText, VirtualKeyCap, KeyCap,
     }
 
     [SerializeField] Pool[] pools;
@@ -54,7 +54,7 @@ public class ObjectPooler : MonoBehaviour
     public static GameObject SpawnFromPool(PoolingType tag, Vector3 position, Quaternion rotation) =>
         inst._SpawnFromPool(tag, position, rotation);
 
-    public static T SpawnFromPool<T>(PoolingType tag, Vector3 position, bool active = false) where T : Component
+    public static T SpawnFromPool<T>(PoolingType tag, Vector3 position, bool active = true) where T : Component
     {
         GameObject obj = inst._SpawnFromPool(tag, position, Quaternion.identity);
         if (obj.TryGetComponent(out T component))

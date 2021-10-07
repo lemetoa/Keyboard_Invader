@@ -17,8 +17,8 @@ TagManager:
   - PlayerProjectile
   - Enemy
   - EnemyProjectile
-  - 
-  - 
+  - VirtualZone
+  - DroppedKey
   - 
   - 
   - 
