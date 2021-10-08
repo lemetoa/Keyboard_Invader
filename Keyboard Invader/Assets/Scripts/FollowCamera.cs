@@ -5,6 +5,9 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public GameObject player;
+    [HideInInspector]
+    public bool isOffsetOn;
+    public Vector3 storeCameraOffset;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,9 @@ public class FollowCamera : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 playerPos = player.transform.position;
-        transform.position = new Vector3(playerPos.x, playerPos.y, this.transform.position.z);
+        if (isOffsetOn)
+            transform.position = new Vector3(playerPos.x, playerPos.y, this.transform.position.z) + storeCameraOffset;
+        else
+            transform.position = new Vector3(playerPos.x, playerPos.y, this.transform.position.z);
     }
 }

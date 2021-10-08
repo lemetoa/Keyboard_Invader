@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
                 OnPlaying();
                 break;
             case GameState.Shopping:
-
+                gameObject.transform.rotation = Quaternion.identity;
                 if (Input.GetMouseButtonDown(0))
                 {
 

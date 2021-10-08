@@ -665,19 +665,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Database\SpriteDatabase\SpriteData.cs" />
+    <Compile Include="Assets\Scripts\BackgroundScroll.cs" />
     <Compile Include="Assets\Scripts\DragableObject.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\Goods.cs" />
     <Compile Include="Assets\Scripts\KeyCap.cs" />
     <Compile Include="Assets\Scripts\KeypadEnum.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PoolingObject.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\ProjectileManager.cs" />
     <Compile Include="Assets\Scripts\ShooterData.cs" />
+    <Compile Include="Assets\Scripts\Store.cs" />
     <Compile Include="Assets\Scripts\System\GSManager.cs" />
     <Compile Include="Assets\Scripts\System\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\System\SerializableDictionary\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\System\ZGTypeDescription.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\VirtualKey.cs" />
     <Compile Include="Assets\ZG\ZG.Core\Attribute\TableStructAttribute.cs" />
     <Compile Include="Assets\ZG\ZG.Core\Exception\RequireTypeAttributeException.cs" />
     <Compile Include="Assets\ZG\ZG.Core\Http\Protocol\CopyExampleResult.cs" />
