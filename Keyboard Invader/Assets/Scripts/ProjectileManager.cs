@@ -84,7 +84,14 @@ public class ProjectileManager : MonoBehaviour
             }
             else
             {
-                proj.transform.Rotate(0, 0, proj.transform.rotation.z + i * 60);
+                float angle = 0;
+                if (shooter.multiShot != 1)
+                {
+                    angle = i * shooter.spread / (shooter.multiShot - 1) - shooter.spread / 2f + shooter.accuracy;
+                }
+                //Debug.Log(angle);
+
+                proj.transform.Rotate(0, 0, proj.transform.rotation.z + angle);
             }
 
             //위치 설정
