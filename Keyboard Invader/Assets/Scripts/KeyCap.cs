@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class KeyCap : MonoBehaviour
 {
@@ -16,16 +17,20 @@ public class KeyCap : MonoBehaviour
     [SerializeField]
     private TextMeshPro tmpro;
 
+    [SerializeField]
+    private int getCost = 200;
+
     public void SetKeyPad(string code)//키패드 속성 변경
     {
         keyPadCode = code;
+        Debug.Log("키패드 " + keyPadCode);
         if (Datas.KeyPadData.KeyPadDataMap.ContainsKey(code))
         {
             keypad = Datas.KeyPadData.KeyPadDataMap[code];
 
             tmpro.text = keypad.stand;
             Stand = (KeyCode)97 -'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
-           // Debug.Log(Stand);
+            Debug.Log(Stand);
         }
     } 
     
@@ -97,4 +102,38 @@ public class KeyCap : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+            Debug.Log("분해");
+        
+        if (GameState.current != GameStateType.Shopping)
+        {
+            return;
+        }
+           
+        if (m_Master != null && Stand != KeyCode.Space)
+        {
+            if(Datas.GameData.GameDataList[1].intValue > 0) // 구매 아이템 선택시
+            {
+                SetKeyPad(Datas.GameData.GameDataList[2].strValue);
+                Datas.GameData.GameDataList[0].intValue -= Datas.GameData.GameDataList[1].intValue;
+                Datas.GameData.GameDataList[1].intValue = 0;
+                GameObject cancelBuyButton = GameObject.Find("CancelBuyButton");
+                cancelBuyButton.SetActive(false);
+            }
+            else
+            {
+                //Debug.Log("crashed!");
+                Datas.GameData.GameDataList[0].intValue += getCost;
+                Vector2Int _pos = new Vector2Int((int)transform.localPosition.x, (int)transform.localPosition.y);
+                m_Master.RemoveKeyPad(_pos);
+
+
+            }
+                Text money = GameObject.Find("CostAmount").GetComponent<Text>();
+                money.text = Datas.GameData.GameDataList[0].intValue.ToString();
+
+        }
+
+    }
 }

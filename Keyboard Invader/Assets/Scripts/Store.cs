@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
-    public GameObject storePopup;
+    public OnClick uiMgr;
     FollowCamera cam;
     PlayerController player;
 
@@ -28,6 +28,7 @@ public class Store : MonoBehaviour
             StartCoroutine(StoreIn());
             // player = col.GetComponent<PlayerController>();
             // player.SetGameState(GameState.Shopping);
+            GameState.ChangeState(GameStateType.Shopping);
         }
     }
 
@@ -35,12 +36,16 @@ public class Store : MonoBehaviour
     IEnumerator StoreIn()
     {
         yield return new WaitForSeconds(0.2f);
-        storePopup.SetActive(true);
+        uiMgr.OpenPopUp(2);
         Time.timeScale = 0;
     }
 
-    public void Buy()
+    public void StoreOut()
     {
-
+        cam.isOffsetOn = false;
+        Time.timeScale = 1;
+        Datas.GameData.GameDataList[1].intValue = 0;
+        GameState.ChangeState(GameStateType.Playing);
+        this.gameObject.SetActive(false);
     }
 }
