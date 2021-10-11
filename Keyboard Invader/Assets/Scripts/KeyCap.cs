@@ -19,6 +19,9 @@ public class KeyCap : MonoBehaviour
 
     [SerializeField]
     private int getCost = 200;
+    private GameObject keycapInfo;
+
+    Collider2D coll;
 
     public void SetKeyPad(string code)//키패드 속성 변경
     {
@@ -51,6 +54,7 @@ public class KeyCap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        keycapInfo = GameObject.Find("KeyCapInfoHolder");
         SetKeyPad(keyPadCode);
     }
 
@@ -104,7 +108,8 @@ public class KeyCap : MonoBehaviour
 
     private void OnMouseDown()
     {
-            Debug.Log("분해");
+        
+        Debug.Log("분해");
         
         if (GameState.current != GameStateType.Shopping)
         {
@@ -135,5 +140,30 @@ public class KeyCap : MonoBehaviour
 
         }
 
+    }
+
+    private void OnMouseEnter()
+    {
+        if (GameState.current == GameStateType.Shopping && Stand != KeyCode.Space)
+        {
+            keycapInfo.transform.GetChild(0).gameObject.SetActive(true);
+
+            if (keypad.stand == "L")
+            {
+                keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("laser1");
+                keycapInfo.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = "레이저";
+            }
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        keycapInfo.transform.position = worldPosition;
+    }
+
+    private void OnMouseExit()
+    {
+        keycapInfo.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
