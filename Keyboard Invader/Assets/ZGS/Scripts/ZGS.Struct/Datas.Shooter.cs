@@ -32,7 +32,6 @@ namespace Datas
 		public String index;
 		public String keyName;
 		public String stand;
-		public Single fireRate;
 		public Boolean autoFire;
 		public Single accuracy;
 		public Int32 multiShot;

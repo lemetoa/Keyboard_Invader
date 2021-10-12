@@ -32,6 +32,7 @@ namespace Datas
 		public String index;
 		public String keyName;
 		public String stand;
+		public String Description;
 		public Single fireRate;
 		public Boolean autoFire;
 		public Single chargeTime;

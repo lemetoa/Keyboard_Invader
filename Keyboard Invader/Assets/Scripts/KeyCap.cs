@@ -22,20 +22,51 @@ public class KeyCap : MonoBehaviour
     private GameObject keycapInfo;
 
     Collider2D coll;
+    
 
-    public void SetKeyPad(string code)//키패드 속성 변경
+    public void SetKeyPad(string code, KeyCode _stand = KeyCode.None)//키패드 속성 변경
     {
         keyPadCode = code;
-        Debug.Log("키패드 " + keyPadCode);
+        //Debug.Log("키패드 " + keyPadCode);
         if (Datas.KeyPadData.KeyPadDataMap.ContainsKey(code))
         {
             keypad = Datas.KeyPadData.KeyPadDataMap[code];
 
-            tmpro.text = keypad.stand;
-            Stand = (KeyCode)97 -'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
-            Debug.Log(Stand);
+            if (_stand != KeyCode.None)
+            {
+                if (keypad.stand == "Space" || keypad.stand == "space")
+                {
+                    tmpro.text = "";
+                    Stand = KeyCode.Space;
+                }
+                else
+                {
+                    tmpro.text = keypad.stand;
+                    Stand = (KeyCode)97 - 'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
+                                                                 // Debug.Log(Stand);
+                }
+            }
         }
     } 
+
+    public void ChangeStand(KeyCode _newCode)
+    {
+
+        if (_newCode == KeyCode.Space)
+        {
+            tmpro.text = "";
+        }
+        {
+            tmpro.text = _newCode.ToString();
+            //Stand = (KeyCode)97 - 'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
+                                                         // Debug.Log(Stand);
+        }
+        Stand = _newCode;
+    }
+    public void ChangeStand(char _newCode)
+    {
+        Stand = (KeyCode)97 - 'A' + _newCode;
+    }
     
     //체력
 
@@ -55,7 +86,8 @@ public class KeyCap : MonoBehaviour
     void Start()
     {
         keycapInfo = GameObject.Find("KeyCapInfoHolder");
-        SetKeyPad(keyPadCode);
+
+            SetKeyPad(keyPadCode, Stand);
     }
 
     // Update is called once per frame
@@ -72,12 +104,21 @@ public class KeyCap : MonoBehaviour
             if (keypad !=null)
             {
                 ProjectileManager.Shoot(transform, keypad.onFirstShot);
+                nextShotTime = Time.time + 1f / keypad.fireRate;
             }
         }
     }
     //누르고있을때
     public void OnUsing()
     {
+        if (keypad.autoFire && Shootable())
+        {
+            if (keypad != null)
+            {
+                ProjectileManager.Shoot(transform, keypad.onFirstShot);
+                nextShotTime = Time.time + 1f / keypad.fireRate;
+            }
+        }
 
     }
     //손가락 땠을 때 

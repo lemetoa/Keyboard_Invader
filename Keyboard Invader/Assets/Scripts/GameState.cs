@@ -16,6 +16,30 @@ public class GameState : MonoBehaviour
     public static GameStateType current { get; protected set; }
     public static void ChangeState(GameStateType _state)
     {
+        switch (_state)
+        {
+            case GameStateType.MainMenu:
+                Time.timeScale = 1f;
+                Score.ResetCurScore();
+                instance.mainMenuAnim.ResetTrigger("Start Trigger");
+                instance.mainMenuAnim.SetTrigger("MainMenu Trigger");
+
+                break;
+            case GameStateType.Playing:
+                Time.timeScale = 1f;
+                break;
+            case GameStateType.Shopping:
+                Time.timeScale = 0f;
+                break;
+            case GameStateType.GameOver:
+                Time.timeScale = 0f;
+                break;
+            case GameStateType.Setting:
+                Time.timeScale = 0f;
+                break;
+            default:
+                break;
+        }
         current = _state;
     }
 
@@ -23,8 +47,19 @@ public class GameState : MonoBehaviour
 
     public Animator mainMenuAnim;
 
-    private static GameStateType lastType = GameStateType.MainMenu; //마지막 상태가 어디였는지
+    public static void StartGame()  //게임 시작
+    {
+        Score.curScore = 0;
+        instance.mainMenuAnim.SetTrigger("Start Trigger");
+        ChangeState(GameStateType.Playing);
+        GameResult.timeBonus = true;
+        PlayerController.instance.transform.position = PlayerController.startPosition;
+        PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space); 
 
+    }
+
+    private static GameStateType lastType = GameStateType.MainMenu; //마지막 상태 기억
+    
     public void EscClicked()
     {
         EscClicked_();
@@ -34,7 +69,15 @@ public class GameState : MonoBehaviour
     {
         if (current == GameStateType.Setting)   //설정창에서 눌렀을때
         {
-            Time.timeScale = 1f;
+            if (lastType == GameStateType.Shopping || lastType == GameStateType.GameOver)
+            {
+               // Time.timeScale = 0f;
+            }
+            else
+            {
+
+               // Time.timeScale = 1f;
+            }
             instance.uiObject.SetActive(false);
             ChangeState(lastType);
         }
@@ -43,6 +86,7 @@ public class GameState : MonoBehaviour
             Time.timeScale = 0f;
             instance.uiObject.SetActive(true);
             lastType = current;
+            Debug.Log(current);
             ChangeState(GameStateType.Setting);
         }
 
@@ -70,11 +114,12 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (current== GameStateType.MainMenu && Input.GetKeyDown(KeyCode.Space))   //게임 시작
+        {/*
             mainMenuAnim.SetTrigger("Start Trigger");
             GameState.ChangeState(GameStateType.Playing);
-            //playerUnit.AddKeyCap(Vector2Int.zero, "0");
+            GameResult.timeBonus = true;*/
+            StartGame();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -35,7 +35,7 @@ public class Store : MonoBehaviour
 
     IEnumerator StoreIn()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         uiMgr.OpenPopUp(2);
         Time.timeScale = 0;
     }

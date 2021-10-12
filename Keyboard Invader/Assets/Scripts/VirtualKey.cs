@@ -19,7 +19,7 @@ public class VirtualKey : MonoBehaviour
     private Transform children;
 
     //public List<GameObject> virtualKey = new List<GameObject>();
-    public string tmpStand;
+    public KeyCode tmpStand;
     public string tmpKeyCode;      //임시로 획득한 키
 
     private Dictionary<Vector2Int, GameObject> virtualKeys = new Dictionary<Vector2Int, GameObject>();
@@ -54,7 +54,7 @@ public class VirtualKey : MonoBehaviour
 
     public void GainTmpKey(KeyCap _key)
     {
-        tmpStand = _key.Stand.ToString();
+        tmpStand = _key.Stand;
         tmpKeyCode = _key.keypad.index;
     }
 
@@ -119,6 +119,6 @@ public class VirtualKey : MonoBehaviour
         {
             item.SetActive(false);
         }*/
-        myUnit.AddKeyCap(intPos, tmpKeyCode);
+        myUnit.AddKeyCap(intPos, tmpKeyCode,tmpStand);
     }
 }

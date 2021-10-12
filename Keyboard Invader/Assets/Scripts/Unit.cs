@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour
     //보유중인 키패드와 위치
     public Dictionary<Vector2Int, KeyCap> keyPads = new Dictionary<Vector2Int, KeyCap>();
     
-    public void AddKeyCap(Vector2Int _pos, string keyCode)
+    public void AddKeyCap(Vector2Int _pos, string keyCode,KeyCode _stand = KeyCode.None)
     {
         //해당위치에 키캡이 없으면 추가
         if (!keyPads.ContainsKey(_pos))
@@ -34,19 +34,26 @@ public class Unit : MonoBehaviour
             newkey.transform.SetParent(transform);
             newkey.transform.localPosition = (Vector2)_pos;
             newkey.transform.localRotation = Quaternion.identity;
+            newkey.ChangeStand(_stand);
 
             newkey.gameObject.layer = gameObject.layer;
             keyPads.Add(_pos, newkey);
             newkey.m_Master = this;
         }
 
-        keyPads[_pos].SetKeyPad(keyCode);
+        keyPads[_pos].SetKeyPad(keyCode,_stand);
+        //keyPads[_pos].sta
         UpdateStands();
     }
 
     public delegate void OnKeyPadRemove();
     public OnKeyPadRemove onKeyPadRemove;
 
+    public delegate void OnDeath();
+    public OnDeath onDeath = new OnDeath(delegate {
+       // Debug.Log("Core destroyed!");
+    });
+    
 
     //키패드 제거
     public void RemoveKeyPad(Vector2Int position)
@@ -54,6 +61,7 @@ public class Unit : MonoBehaviour
        // Debug.Log(position);
         if (keyPads.ContainsKey(position))
         {
+            KeyCode _stand = keyPads[position].Stand;
             keyPads[position].gameObject.SetActive(false);
             keyPads[position].transform.SetParent(null);
             keyPads[position].m_Master = null;
@@ -61,6 +69,11 @@ public class Unit : MonoBehaviour
             keyPads.Remove(position);
             onKeyPadRemove.Invoke();
 
+            if (position == Vector2Int.zero)//파괴된 곳이 코어면
+            {
+                onDeath.Invoke();
+                
+            }
             Vector2Int connected = position + Vector2Int.up;
             if (!IsConectedtoCore(connected))
             {
@@ -81,6 +94,8 @@ public class Unit : MonoBehaviour
             {
                 RemoveKeyPad(connected);
             }
+
+            UpdateStands();
         }
     }
 
@@ -90,6 +105,11 @@ public class Unit : MonoBehaviour
         if (_pos == Vector2Int.zero)
         {
             return true;
+        }    
+        //0,0에 키가 없으면 무조건 코어와 떨어진걸로 판정
+        if (!keyPads.ContainsKey(Vector2Int.zero)) 
+        {
+            return false;
         }
         List<Vector2Int> closedPos = new List<Vector2Int>();
         closedPos.Add(Vector2Int.zero);
@@ -150,7 +170,7 @@ public class Unit : MonoBehaviour
             {
                 asdf += item;
             }
-           // Debug.Log(asdf);
+
         } while (OpenList.Count != 0);
 
         return false;
@@ -162,13 +182,17 @@ public class Unit : MonoBehaviour
     //보유중인 키패드와 상호작용 가능한 버튼들 찾기
     private void UpdateStands()
     {
+        //string sum = "";
+        stands.Clear();
         foreach (var item in keyPads.Values.ToArray())
         {
+            //sum += item.Stand;
             if (!stands.Contains(item.Stand))
             {
                 stands.Add(item.Stand);
-            } 
+            }
         }
+        //Debug.Log(sum);
     }
 
 
@@ -186,6 +210,7 @@ public class Unit : MonoBehaviour
         return result;
 
     }
+    
 
     //특정 키가 눌렸을때
     

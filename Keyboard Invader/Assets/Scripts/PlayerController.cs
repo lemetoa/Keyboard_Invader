@@ -6,6 +6,8 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    public static Vector2 startPosition;
     [SerializeField]
     private Animator anim;
 
@@ -22,16 +24,29 @@ public class PlayerController : MonoBehaviour
     private Transform[] keypads; //키패드 트랜스폼 (임시)
 
     public List<KeyCode> keys = new List<KeyCode>();
+
+    private void Awake()
+    {
+        instance = this;
+        startPosition = transform.position;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        playerUnit.AddKeyCap(Vector2Int.zero, "0");
+        //playerUnit.AddKeyCap(Vector2Int.zero, "0",KeyCode.Space);
         camera = Camera.main;
         if (virtualKey ==null)
         {
             virtualKey = GetComponent<VirtualKey>();
             virtualKey.SetUnit(playerUnit);
         }
+        playerUnit.onDeath += delegate {
+            GameResult.ShowResult();
+            GameState.ChangeState(GameStateType.GameOver);
+            playerUnit.SetMove(false);
+        };
+
+
     }
     // Update is called once per frame
     void Update()
@@ -96,12 +111,13 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ProjectileManager.Shoot(keypads[0], "0");
+           // ProjectileManager.Shoot(keypads[0], "0");
         }
         
         //현재 가지고있는 알파벳 종류만큼 foreach문 돌아서  키 눌렸는지 확인
         foreach (var _stand in playerUnit.stands)
         {
+           
             if (Input.GetKeyDown(_stand))
             {
                 foreach (var _keyCap in playerUnit.GetKeybyStand(_stand))
@@ -111,13 +127,31 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        
+        //현재 가지고있는 알파벳 종류만큼 foreach문 돌아서  키 눌렸는지 확인
+        foreach (var _stand in playerUnit.stands)
+        {
+            if (Input.GetKey(_stand))
+            {
+                foreach (var _keyCap in playerUnit.GetKeybyStand(_stand))
+                {
+
+                    _keyCap.OnUsing();
+                }
+            }
+        }
+        
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (1<< collision.gameObject.layer == LayerMask.GetMask("DroppedKey"))
+        if (1 << collision.gameObject.layer == LayerMask.GetMask("DroppedKey"))
         {
+            Debug.Log("key touched");
             if (collision.gameObject.TryGetComponent(out KeyCap _cap))
             {
                 virtualKey.GainTmpKey(_cap);

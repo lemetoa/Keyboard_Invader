@@ -110,6 +110,7 @@ public class Reinforce_Grid : MonoBehaviour
             }
             Datas.GameData.GameDataList[2].strValue = str;
             Debug.Log("str값 " + Datas.GameData.GameDataList[2].strValue);
+            Debug.Log(Datas.KeyPadData.KeyPadDataMap[str].Description);
             // Datas.GameData.GameDataList[2].strValue 참조해 능력 부여
 
             // if (type == Type.Unit)

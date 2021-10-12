@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
 
     public static float curScore = 0;   //이번 점수
 
-    private static bool highUpdated = false; //이번에 최고기록 갱신했는지
+    public static bool highUpdated = false; //이번에 최고기록 갱신했는지
 
     [SerializeField]
     public TextMeshProUGUI scoreText,scoreNumber;
@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
         if (IsAboveBest(curScore))
         {
             highScore = curScore;
-            SaveHighScore();
+            // SaveHighScore();         //최고기록은 게임 끝났을때 저장함
 
             if (!highUpdated)
             {
@@ -38,8 +38,19 @@ public class Score : MonoBehaviour
         }
     }
 
+    public static void ResetCurScore()
+    {
+        curScore = 0f;
+        instance.scoreNumber.text = "0";
+        //instance.scoreText.color = Color.white;
+        //instance.scoreNumber.color = Color.white;
+        instance.anim.SetTrigger("backtoNormal");
+    }
+
     public static void SaveHighScore()
     {
+        float _score = Mathf.Max(curScore, highScore); highScore = curScore;
+        highScore = _score;
         PlayerPrefs.SetFloat("HighScore", highScore);
     }
     public static void ResetHighScore()
@@ -76,7 +87,7 @@ public class Score : MonoBehaviour
     {
         if (GameState.current == GameStateType.Playing)
         {
-            AddScore(10 * Time.deltaTime * Time.timeScale);
+            AddScore(1 * Time.deltaTime * Time.timeScale);
         }
     }
 }
