@@ -33,22 +33,13 @@ public class ProjectileManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
     }
-
+    /*
     public static void Shoot(Transform _transform, string shootCode)
     {
         Shoot(_transform, shootCode, 0);
-    }
-    public static void Shoot(Transform _transform, string shootCode,int counter = 0)
+    }*/
+    public static void Shoot(Transform _transform, string shootCode,  int _layer)
     {
-        /*
-        if (!Datas.Shooter.ShooterMap.ContainsKey(shootCode))
-        {
-            var proj = ObjectPooler.SpawnFromPool<Projectile>(ObjectPooler.PoolingType.Projectile, _transform.position, true);
-
-            proj.SetCode("0");
-
-            return;
-        }*/
         var shooter = Datas.Shooter.ShooterMap[shootCode];
         if (shooter ==null)
         {
@@ -58,7 +49,16 @@ public class ProjectileManager : MonoBehaviour
         for (int i = 0; i < shooter.multiShot; i++)
         {
             var proj = ObjectPooler.SpawnFromPool<Projectile>(ObjectPooler.PoolingType.Projectile, _transform.position,true);
-            
+
+            //8,9면 9 10,11이면 11
+            if (_layer == 8 || _layer == 9)
+            {
+                proj.gameObject.layer = 9;
+            }
+            else if(_layer == 10 || _layer == 11)
+            {
+                proj.gameObject.layer = 11;
+            }
             //투사체 선택
             int _count = 0;
             if (shooter.randomShot)
@@ -67,10 +67,10 @@ public class ProjectileManager : MonoBehaviour
                 _count = Random.Range(0, shooter.projectiles.Count - 1);
 
             }
-            else if(counter !=0)
+            else
             {
-
-                _count = shooter.projectiles.Count % counter;
+                // _count = shooter.projectiles.Count % 1;
+                _count = 0;
             }
             
             proj.SetCode(shooter.projectiles[_count]);

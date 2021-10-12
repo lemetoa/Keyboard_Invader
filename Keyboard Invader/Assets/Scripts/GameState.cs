@@ -19,7 +19,7 @@ public class GameState : MonoBehaviour
         switch (_state)
         {
             case GameStateType.MainMenu:
-                Time.timeScale = 1f;
+                Time.timeScale = 0f;
                 Score.ResetCurScore();
                 instance.mainMenuAnim.ResetTrigger("Start Trigger");
                 instance.mainMenuAnim.SetTrigger("MainMenu Trigger");
@@ -32,6 +32,7 @@ public class GameState : MonoBehaviour
                 Time.timeScale = 0f;
                 break;
             case GameStateType.GameOver:
+                ResetGame();
                 Time.timeScale = 0f;
                 break;
             case GameStateType.Setting:
@@ -45,17 +46,32 @@ public class GameState : MonoBehaviour
 
     public GameObject uiObject;
 
+
+    public delegate void OnReset();
+    public static OnReset onReset = new OnReset(delegate {
+        // Debug.Log("Core destroyed!");
+    });
+
+
     public Animator mainMenuAnim;
 
     public static void StartGame()  //게임 시작
     {
+        ResetGame();
         Score.curScore = 0;
         instance.mainMenuAnim.SetTrigger("Start Trigger");
         ChangeState(GameStateType.Playing);
         GameResult.timeBonus = true;
         PlayerController.instance.transform.position = PlayerController.startPosition;
-        PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space); 
+        PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space);
+        EnemySpawner.StartSpawn();
 
+    }
+    //게임 리셋
+    public static void ResetGame()
+    {
+        // 모든 투사체 비활성화
+        onReset.Invoke();
     }
 
     private static GameStateType lastType = GameStateType.MainMenu; //마지막 상태 기억

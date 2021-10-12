@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -84,7 +85,8 @@ public class ObjectPooler : MonoBehaviour
     {
         if (!inst.poolDictionary.ContainsKey(tag))
             throw new Exception($"Pool with tag {tag} doesn't exist.");
-
+        Debug.Log(tag);
+        return inst.poolDictionary[tag].ToList();
         return inst.spawnObjects.FindAll(x => x.tag == tag.ToString());
     }
 

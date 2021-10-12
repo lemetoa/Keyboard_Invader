@@ -411,7 +411,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 926e90ad4c7ad3b4b98afdec57329836, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1043,7 +1043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430320994}
   - component: {fileID: 430320995}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4537,7 +4537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318390610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.2739868, z: 0}
+  m_LocalPosition: {x: -3.42, y: -2.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2131889447}
@@ -4599,7 +4599,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -7258,7 +7258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036260844}
   - component: {fileID: 2036260845}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7469,6 +7469,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2106619572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2106619574}
+  - component: {fileID: 2106619573}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2106619573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106619572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353758b3513a8754699db6f8261c8bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 6759088033807183779}
+  - {fileID: 6759088032797492040}
+  spawnRate: 2
+  spawnCount: 1
+  levelUpCycle: 20
+  distance: 15
+  player: {fileID: 1318390612}
+--- !u!4 &2106619574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106619572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9937171, y: -3.6363242, z: -6.371294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131395300
 GameObject:
@@ -7986,7 +8037,7 @@ GameObject:
   - component: {fileID: 4923090895869721136}
   - component: {fileID: 1224530868}
   - component: {fileID: 1224530867}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: KeyPad_standard (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8051,7 +8102,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6759088032797492040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.796, y: -2.04, z: 0}
+  m_LocalPosition: {x: -7.76, y: 6.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6759088033822678580}
@@ -8208,7 +8259,7 @@ GameObject:
   - component: {fileID: 6759088032811233826}
   - component: {fileID: 6759088032811233825}
   - component: {fileID: 6759088032811233824}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8247,7 +8298,7 @@ GameObject:
   - component: {fileID: 4923090897015445211}
   - component: {fileID: 1093546519}
   - component: {fileID: 1093546518}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: KeyPad_standard (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8262,7 +8313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6759088033807183779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.796, y: -3.54, z: 0}
+  m_LocalPosition: {x: 10.35, y: -4.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6759088032811234015}
@@ -8351,7 +8402,7 @@ GameObject:
   - component: {fileID: 6759088033822678729}
   - component: {fileID: 6759088033822678730}
   - component: {fileID: 6759088033822678731}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -76,7 +76,7 @@ public class EnemyKeyCap : MonoBehaviour
         {
             if (keypad != null)
             {
-                ProjectileManager.Shoot(transform, keypad.onFirstShot);
+                ProjectileManager.Shoot(transform, keypad.onFirstShot,gameObject.layer);
                 nextShotTime = Time.time + 1f / keypad.fireRate;
             }
         }

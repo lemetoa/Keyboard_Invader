@@ -54,10 +54,14 @@ public class Projectile : MonoBehaviour
 
         if (projCode !=null && projCode.onEnd[0] =='1')     //종료시에 호출할 슈터가 있다면
         { 
-            ProjectileManager.Shoot(transform, projCode.onEnd);
+            ProjectileManager.Shoot(transform, projCode.onEnd, gameObject.layer);
         }
     }
 
+    private void Awake()
+    {
+        GameState.onReset += delegate { gameObject.SetActive(false); };
+    }
     private void FixedUpdate()
     {
         transform.Translate(Vector2.up *Time.fixedDeltaTime* velocity);

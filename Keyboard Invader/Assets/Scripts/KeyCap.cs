@@ -103,7 +103,8 @@ public class KeyCap : MonoBehaviour
         {
             if (keypad !=null)
             {
-                ProjectileManager.Shoot(transform, keypad.onFirstShot);
+                Debug.Log(gameObject.layer);
+                ProjectileManager.Shoot(transform, keypad.onFirstShot,gameObject.layer);
                 nextShotTime = Time.time + 1f / keypad.fireRate;
             }
         }
@@ -115,7 +116,7 @@ public class KeyCap : MonoBehaviour
         {
             if (keypad != null)
             {
-                ProjectileManager.Shoot(transform, keypad.onFirstShot);
+                ProjectileManager.Shoot(transform, keypad.onFirstShot, gameObject.layer);
                 nextShotTime = Time.time + 1f / keypad.fireRate;
             }
         }

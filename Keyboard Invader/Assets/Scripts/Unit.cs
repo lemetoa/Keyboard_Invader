@@ -33,6 +33,7 @@ public class Unit : MonoBehaviour
         if (!keyPads.ContainsKey(_pos))
         {
             var newkey = ObjectPooler.SpawnFromPool<KeyCap>(ObjectPooler.PoolingType.KeyCap, transform.position);
+          
             newkey.transform.SetParent(transform);
             newkey.transform.localPosition = (Vector2)_pos;
             newkey.transform.localRotation = Quaternion.identity;

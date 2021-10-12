@@ -33,6 +33,9 @@ public class GameResult : MonoBehaviour
 
     public static void ShowResult()
     {
+        EnemySpawner.StopSpawn();
+        EnemySpawner.ResetSpawner();
+
         Score.SaveHighScore();
         instance.timeTmpro.text = playTime.ToString("00:00");
         instance.enemyTmpro.text = enemyDestroyed.ToString("0");
