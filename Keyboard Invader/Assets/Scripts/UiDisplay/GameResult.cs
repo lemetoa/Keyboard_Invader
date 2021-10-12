@@ -65,6 +65,7 @@ public class GameResult : MonoBehaviour
     public void RetryClicked()    // 리트라이 눌렸을때
     {
         CloseResult();
+        Score.ResetCurScore();
         GameState.StartGame();
     }
 

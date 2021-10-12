@@ -28,6 +28,8 @@ public class EnemyKeyCap : MonoBehaviour
     [SerializeField]
     private float life;
     private float currentLife;
+    [SerializeField]
+    private SpriteRenderer outLine;
 
     //생명 게이지 프리팹을 저장할 변수
     public GameObject hpBarPrefab;
@@ -39,6 +41,7 @@ public class EnemyKeyCap : MonoBehaviour
     GameObject hpBar;
     void Start()
     {
+        GameState.onReset += Disable;
         //생명 게이지의 생성 및 초기화
         uiCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
         //overlayCanvas = GameObject.Find("UICanvas_Overlay").GetComponent<Canvas>();
@@ -54,16 +57,39 @@ public class EnemyKeyCap : MonoBehaviour
     }
     private void OnEnable()
     {
+        //타입 무작위로 설정
+        int i = Random.Range(0, 2);
+        if (i == 0)
+        {
+            outLine.color = Color.blue;
+            Enemy = Type.Normal;
+        }
+        else
+        {
+            outLine.color = Color.red;
+            Enemy = Type.Rotate;
+        }
         if (uiCanvas != null)
             RestartHpBar(uiCanvas);
     }
+    private void OnDisable()
+    {
 
+       // GameState.onReset -= delegate { Disable(); };
+        // ObjectPooler.ReturnToPool(gameObject, ObjectPooler.PoolingType.Enemy);
+    }
 
     protected virtual void Disable()
     {
         currentLife = life;
         hpBar.SetActive(false);
-        gameObject.SetActive(false);
+        GameState.onReset -= Disable;
+        if (gameObject !=null)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);    //오브젝트풀링하면 자꾸 게임 멈춘다
+        }
+
     }
 
     void SetHpBar(Canvas canvas)
@@ -154,7 +180,14 @@ public class EnemyKeyCap : MonoBehaviour
     {
         if (1 << collision.gameObject.layer == LayerMask.GetMask("PlayerProjectile"))
         {
-            currentLife -= collision.GetComponent<Projectile>().damage;
+            var _projectile = collision.GetComponent<Projectile>();
+            _projectile.life -= 1f;
+            if (_projectile.life<=0)
+            {
+                collision.gameObject.SetActive(false);
+            }
+
+            currentLife -= _projectile.damage;
 
             hpBarImage.fillAmount = currentLife / life;
 
@@ -162,6 +195,9 @@ public class EnemyKeyCap : MonoBehaviour
             {
                 KeyCap key = ObjectPooler.SpawnFromPool<KeyCap>(ObjectPooler.PoolingType.KeyCap, transform.position, true);
                 key.SetKeyPad("1L1", KeyCode.L);
+                key.gameObject.layer = 13;
+                Score.AddScore(100f);
+                GameResult.enemyDestroyed++;
                 hpBarImage.transform.parent.gameObject.SetActive(false);
                 Disable();
             }

@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
         //프리팹중에서 무작위로 선택
         int _i = Random.Range(0, instance.enemyPrefabs.Count);
         var newObj = Instantiate(instance.enemyPrefabs[_i],pos,Quaternion.identity);
+        //ObjectPooler.SpawnFromPool(ObjectPooler.PoolingType.Enemy, pos);
     }
 
     private static IEnumerator spawnCycle;

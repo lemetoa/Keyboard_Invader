@@ -42,6 +42,7 @@ public class Score : MonoBehaviour
     {
         curScore = 0f;
         instance.scoreNumber.text = "0";
+        highUpdated = false;
         //instance.scoreText.color = Color.white;
         //instance.scoreNumber.color = Color.white;
         instance.anim.SetTrigger("backtoNormal");

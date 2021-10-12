@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
 
     [SerializeField]
-    private Transform[] keypads; //키패드 트랜스폼 (임시)
+    private float rotateSpeed = 20f;  //회전속도
 
     public List<KeyCode> keys = new List<KeyCode>();
 
@@ -96,7 +96,10 @@ public class PlayerController : MonoBehaviour
         if (!Input.GetKey(KeyCode.LeftControl))
         {
 
-            player.up = mousePos - (Vector2)transform.position;
+            Vector2 dir = mousePos - (Vector2)transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Slerp(transform.localRotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotateSpeed);
+            // player.up = mousePos - (Vector2)transform.position;
         }
 
         if (Input.GetMouseButton(0))
@@ -158,6 +161,7 @@ public class PlayerController : MonoBehaviour
                 virtualKey.SetVirtualKeys(playerUnit.keyPads.Keys.ToList());
                 virtualKey.SetKeysActive(true);
             }
+            collision.gameObject.SetActive(false);
         }
     }
 }

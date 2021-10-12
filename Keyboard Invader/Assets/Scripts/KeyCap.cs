@@ -88,6 +88,13 @@ public class KeyCap : MonoBehaviour
         keycapInfo = GameObject.Find("KeyCapInfoHolder");
 
         SetKeyPad(keyPadCode, Stand);
+
+        //아이템 키일 경우 게임 재시작 시 비활성화
+        GameState.onReset += delegate {
+            if (gameObject.layer ==13)
+            {
+                gameObject.SetActive(false);
+            } };
     }
 
     // Update is called once per frame
@@ -103,7 +110,6 @@ public class KeyCap : MonoBehaviour
         {
             if (keypad !=null)
             {
-                Debug.Log(gameObject.layer);
                 ProjectileManager.Shoot(transform, keypad.onFirstShot,gameObject.layer);
                 nextShotTime = Time.time + 1f / keypad.fireRate;
             }
@@ -138,6 +144,13 @@ public class KeyCap : MonoBehaviour
     {
         if (1<<collision.gameObject.layer == LayerMask.GetMask("EnemyProjectile"))
         {
+            
+            var _projectile = collision.GetComponent<Projectile>();
+            _projectile.life -= 1f;
+            if (_projectile.life <= 0)
+            {
+                collision.gameObject.SetActive(false);
+            }
             if (m_Master !=null)
             {
                 //Debug.Log("crashed!");

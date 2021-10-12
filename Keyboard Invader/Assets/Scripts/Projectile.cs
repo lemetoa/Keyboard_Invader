@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     private float velocity;
     private float duration;
     public float damage { get; private set; }
+    public float life;//탄 내구도
 
     private string onEnd;
 
@@ -26,6 +27,7 @@ public class Projectile : MonoBehaviour
         velocity = projCode.velocity;
         duration = projCode.duration;
         damage = projCode.damege;
+        life = projCode.penetration;
 
         onEnd = projCode.onEnd;
         float angle = Mathf.Atan2(transform.position.x, transform.position.y) * Mathf.Rad2Deg - 90f;
