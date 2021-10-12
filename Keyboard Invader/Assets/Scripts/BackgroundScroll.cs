@@ -13,6 +13,7 @@ public class BackgroundScroll : MonoBehaviour
     private Camera _camera;
 
     public float bgScale = 1f;
+    Vector3 startPos;
 
     [Tooltip("Moving Scale when the camera moves on")]
     public Vector2 bgScrollingSpeed = new Vector2(1, 1);
@@ -21,6 +22,7 @@ public class BackgroundScroll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPos = new Vector2(transform.position.x, transform.position.y);
         _camera = Camera.main;
         if (_transform == null)
         {
@@ -57,7 +59,7 @@ public class BackgroundScroll : MonoBehaviour
     public void ChangeOffset()
     {
 
-        _transform.position = _camera.transform.position + Vector3.forward * 20;
+        _transform.position = startPos + _camera.transform.position + Vector3.forward * 20;
         float _x = 0;
         if (bgScrollingSpeed.x != 0)
         {

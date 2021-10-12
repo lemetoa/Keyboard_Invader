@@ -9,17 +9,17 @@ public class KeyCap : MonoBehaviour
     public Datas.KeyPadData keypad { get; protected set; }     //키패드 속성
 
     [SerializeField]
-    private string keyPadCode;
+    protected string keyPadCode;
     public KeyCode Stand = KeyCode.Space;
 
     public Unit m_Master;
 
     [SerializeField]
-    private TextMeshPro tmpro;
+    protected TextMeshPro tmpro;
 
     [SerializeField]
     private int getCost = 200;
-    private GameObject keycapInfo;
+    protected GameObject keycapInfo;
 
     Collider2D coll;
     
@@ -83,11 +83,11 @@ public class KeyCap : MonoBehaviour
     private float chargeTime;       //차지 완료되는 시간 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         keycapInfo = GameObject.Find("KeyCapInfoHolder");
 
-            SetKeyPad(keyPadCode, Stand);
+        SetKeyPad(keyPadCode, Stand);
     }
 
     // Update is called once per frame
@@ -97,7 +97,7 @@ public class KeyCap : MonoBehaviour
     }
 
     //누르기 시작할때
-    public void OnUseStart()
+    public virtual void OnUseStart()
     {
         if (Shootable())
         {
@@ -133,7 +133,7 @@ public class KeyCap : MonoBehaviour
         CancelInvoke();    // Monobehaviour에 Invoke가 있다면 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (1<<collision.gameObject.layer == LayerMask.GetMask("EnemyProjectile"))
         {

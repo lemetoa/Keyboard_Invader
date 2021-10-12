@@ -5,6 +5,8 @@ using System.Linq;
 
 public class Unit : MonoBehaviour
 {
+    FollowCamera cam;
+
     [SerializeField]
     private float moveSpeed;
 
@@ -192,6 +194,8 @@ public class Unit : MonoBehaviour
                 stands.Add(item.Stand);
             }
         }
+
+        cam.currSize = stands.Count + cam.startSize;
         //Debug.Log(sum);
     }
 
@@ -222,7 +226,7 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = Camera.main.GetComponent<FollowCamera>();
     }
 
     // Update is called once per frame
