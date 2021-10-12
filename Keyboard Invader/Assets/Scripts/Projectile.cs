@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public Datas.Projectile projCode;
     private float velocity;
     private float duration;
+    public float damage { get; private set; }
 
     private string onEnd;
 
@@ -24,7 +25,7 @@ public class Projectile : MonoBehaviour
         projCode = Datas.Projectile.ProjectileMap[code];
         velocity = projCode.velocity;
         duration = projCode.duration;
-        
+        damage = projCode.damege;
 
         onEnd = projCode.onEnd;
         float angle = Mathf.Atan2(transform.position.x, transform.position.y) * Mathf.Rad2Deg - 90f;

@@ -668,6 +668,8 @@
     <Compile Include="Assets\Scripts\BackgroundScroll.cs" />
     <Compile Include="Assets\Scripts\Decomposition.cs" />
     <Compile Include="Assets\Scripts\DragableObject.cs" />
+    <Compile Include="Assets\Scripts\EnemyKeyCap.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\Goods.cs" />
@@ -685,6 +687,8 @@
     <Compile Include="Assets\Scripts\System\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\System\SerializableDictionary\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\System\ZGTypeDescription.cs" />
+    <Compile Include="Assets\Scripts\UiDisplay\GameResult.cs" />
+    <Compile Include="Assets\Scripts\UiDisplay\HpBar.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\Score.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\VirtualKey.cs" />
