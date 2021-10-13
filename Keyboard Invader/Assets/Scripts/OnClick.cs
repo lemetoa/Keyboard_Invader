@@ -9,19 +9,18 @@ public class OnClick : MonoBehaviour
 {
     bool isTrue_speed;
     public GameObject GridLayout;
-    public GameObject image;
     public GameObject cancelClick;
     private readonly int hashisEnter = Animator.StringToHash("isEnter");
     Animator animator;
     bool isTrue_reinforce;
-
+    [HideInInspector]
+    public bool dontDoAgain;
 
     void Start()
     {
 
         try
         {
-            animator = image.GetComponent<Animator>();
             animator.SetBool(hashisEnter, true);
             GridLayout.SetActive(false);
         }
@@ -94,6 +93,47 @@ public class OnClick : MonoBehaviour
         }
         else { childTxt.text = "강화"; }
         GridLayout.SetActive(isTrue_reinforce);
+    }
+
+    public void RandomProjectile()
+    {
+        if (dontDoAgain)
+        {
+            return;
+        }
+        Debug.Log("Random Start");
+        List<int> list = new List<int>();
+
+        while (list.Count < 3)
+        {
+            int element = UnityEngine.Random.Range(0, 7);
+            if (!list.Contains(element))
+            {
+                list.Add(element);
+            }
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log(list[i]);
+            GridLayout.transform.GetChild(list[i]).gameObject.SetActive(true);
+        }
+        /*
+        for (int i = 0; i < 3; i++)
+        {
+
+            int idx = UnityEngine.Random.Range(0, GridLayout.transform.childCount - 1);
+
+            for (int j = 0; j < GridLayout.transform.childCount - 1; j++)
+            {
+                if (idx == j)
+                {
+                    GridLayout.transform.GetChild(i).gameObject.SetActive(true);
+
+                }
+            }
+        }
+        */
+        dontDoAgain = true;
     }
 
     public void DeleteData()

@@ -6,7 +6,11 @@ public class Store : MonoBehaviour
 {
     public OnClick uiMgr;
     FollowCamera cam;
-    PlayerController player;
+    [SerializeField]
+    Transform backgroundParent;
+    [SerializeField]
+    private Material[] material;
+    int level;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +24,22 @@ public class Store : MonoBehaviour
         
     }
 
+
+    public void ChangeBackground()
+    {
+        for (int i = 0; i < backgroundParent.childCount - 1; i++)
+        {
+            backgroundParent.GetChild(i).GetComponent<Renderer>().material = material[level];
+        }
+        level++;
+        uiMgr.dontDoAgain = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.layer == 8)
         {
-            cam.isOffsetOn = true;
-            StartCoroutine(StoreIn());
+            StoreIn();
             // player = col.GetComponent<PlayerController>();
             // player.SetGameState(GameState.Shopping);
             GameState.ChangeState(GameStateType.Shopping);
@@ -33,19 +47,20 @@ public class Store : MonoBehaviour
     }
 
 
-    IEnumerator StoreIn()
+    public void StoreIn()
     {
-        yield return new WaitForSecondsRealtime(0.2f);
         uiMgr.OpenPopUp(2);
+        uiMgr.RandomProjectile();
         Time.timeScale = 0;
+        cam.transform.position = cam.transform.position + cam.storeCameraOffset;
     }
 
     public void StoreOut()
     {
-        cam.isOffsetOn = false;
         Time.timeScale = 1;
         Datas.GameData.GameDataList[1].intValue = 0;
         GameState.ChangeState(GameStateType.Playing);
         this.gameObject.SetActive(false);
+        ChangeBackground();
     }
 }

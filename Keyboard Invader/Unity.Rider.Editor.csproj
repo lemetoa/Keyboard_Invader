@@ -282,10 +282,10 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>G:/Keyboard/Keyboard Invader/Assets/ZG/JsonDotNet/Assemblies/AOT/Newtonsoft.Json.dll</HintPath>
+      <HintPath>G:/Keyboard_Invader/Keyboard Invader/Assets/ZG/JsonDotNet/Assemblies/AOT/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>G:/Keyboard/Keyboard Invader/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>G:/Keyboard_Invader/Keyboard Invader/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/2019.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
