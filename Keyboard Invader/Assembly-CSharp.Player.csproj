@@ -665,7 +665,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Database\SpriteDatabase\SpriteData.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\DestroyEffect.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\csLightControl.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\csMouseOrbit.cs" />
     <Compile Include="Assets\Scripts\BackgroundScroll.cs" />
+    <Compile Include="Assets\Scripts\BossKeyCap.cs" />
     <Compile Include="Assets\Scripts\Decomposition.cs" />
     <Compile Include="Assets\Scripts\DragableObject.cs" />
     <Compile Include="Assets\Scripts\EnemyKeyCap.cs" />

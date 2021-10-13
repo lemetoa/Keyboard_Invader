@@ -138,18 +138,15 @@ public class EnemyKeyCap : MonoBehaviour
         {
             Vector3 dir = target.position - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Slerp(transform.localRotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotSpeed);
-
-
-            Vector3 toTarg = (target.position - transform.position).normalized;
-            rb.velocity = toTarg;
+            transform.rotation = Quaternion.Slerp(transform.localRotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotSpeed);    
         }
         else
         {
             transform.Rotate(0, 0, rotSpeed * Time.deltaTime);
-            Vector3 toTarg = (target.position - transform.position).normalized;
-            rb.velocity = toTarg;
         }
+
+        Vector3 toTarg = (target.position - transform.position).normalized;
+        rb.velocity = toTarg;
 
         OnUseStart();
 

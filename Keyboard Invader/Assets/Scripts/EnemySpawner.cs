@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance;
 
+    public GameObject bossPrefab;
     public List<GameObject> enemyPrefabs = new List<GameObject>();
     public float spawnRate; //스폰 주기
     [SerializeField]
@@ -33,6 +34,16 @@ public class EnemySpawner : MonoBehaviour
         //ObjectPooler.SpawnFromPool(ObjectPooler.PoolingType.Enemy, pos);
     }
 
+    private static void SpawnBoss()
+    {
+        //플레이어 위치에서 무작위방향으로 n만큼 떨어진 거리에 생성
+        Vector2 pos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))
+            .normalized * instance.distance + (Vector2)instance.player.position;
+
+        var newObj = Instantiate(instance.bossPrefab, pos, Quaternion.identity);
+        //ObjectPooler.SpawnFromPool(ObjectPooler.PoolingType.Enemy, pos);
+    }
+
     private static IEnumerator spawnCycle;
     private static IEnumerator SpawnCycle()
     {
@@ -53,7 +64,14 @@ public class EnemySpawner : MonoBehaviour
                     instance.spawnCount++;
                     levelTimer -= instance.spawnRate;
                 }
+
+                // if 타이머
+                {
+                    SpawnBoss();
+                }
+
             }
+
         }
     }
 
