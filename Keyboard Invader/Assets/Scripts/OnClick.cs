@@ -106,7 +106,7 @@ public class OnClick : MonoBehaviour
 
         while (list.Count < 3)
         {
-            int element = UnityEngine.Random.Range(0, 7);
+            int element = UnityEngine.Random.Range(0, 4);
             if (!list.Contains(element))
             {
                 list.Add(element);

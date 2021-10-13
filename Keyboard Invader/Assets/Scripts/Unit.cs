@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor;
 
 public class Unit : MonoBehaviour
 {
@@ -233,7 +234,10 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (EditorApplication.isPlaying)
+        {
+            UpdateStands();
+        }
     }
 
     private void FixedUpdate()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class KeyCap : MonoBehaviour
 {
@@ -100,7 +101,10 @@ public class KeyCap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (EditorApplication.isPlaying)
+        {
+            SetKeyPad(keyPadCode, Stand);
+        }
     }
 
     //누르기 시작할때
@@ -199,14 +203,15 @@ public class KeyCap : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (GameState.current == GameStateType.Shopping && Stand != KeyCode.Space)
+        if (GameState.current == GameStateType.Shopping)
         {
             keycapInfo.transform.GetChild(0).gameObject.SetActive(true);
 
-            if (keypad.stand == "L")
+            
             {
                 keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("laser1");
-                keycapInfo.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = "레이저";
+                keycapInfo.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = Datas.KeyPadData.KeyPadDataMap[keyPadCode].Description; ;
+
             }
         }
     }

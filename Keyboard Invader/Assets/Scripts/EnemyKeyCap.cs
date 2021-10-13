@@ -108,7 +108,7 @@ public class EnemyKeyCap : MonoBehaviour
             {
                 hpBar = canvas.transform.GetChild(i).gameObject;
                 hpBarImage.fillAmount = 1;
-                hpBar.SetActive(true);
+                
                 break;
             }
             else if (i + 1 >= canvas.transform.childCount - 1)
@@ -118,6 +118,7 @@ public class EnemyKeyCap : MonoBehaviour
             }
         }
         HpFollow();
+        hpBar.SetActive(true);
     }
 
     void HpFollow()

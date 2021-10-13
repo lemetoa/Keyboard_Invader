@@ -9,11 +9,8 @@ public class Reinforce_Grid : MonoBehaviour
 {
     public enum Type
     {
-        Bubble,
         Crystal,
-        Dice,
         Laser,
-        Zip,
         Shotgun,
         Double,
         
@@ -44,25 +41,13 @@ public class Reinforce_Grid : MonoBehaviour
         image.sprite = sprite;
         cancelBuyButton = transform.parent.parent.parent.GetChild(2).gameObject;
 
-        if (type == Type.Bubble)
-        {
-            keyPadStr = "1B1";
-        }
-        else if (type == Type.Crystal)
+        if (type == Type.Crystal)
         {
             keyPadStr = "1C1";
-        }
-        else if (type == Type.Dice)
-        {
-            keyPadStr = "1D1";
         }
         else if (type == Type.Laser)
         {
             keyPadStr = "1L1";
-        }
-        else if (type == Type.Zip)
-        {
-            keyPadStr = "1Z1";
         }
         else if (type == Type.Shotgun)
         {
@@ -70,7 +55,7 @@ public class Reinforce_Grid : MonoBehaviour
         }
         else if (type == Type.Double)
         {
-            keyPadStr = "1D1";
+            keyPadStr = "1D2";
         }
 
         description = transform.parent.GetChild(1).GetComponent<Text>();
