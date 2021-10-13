@@ -6,6 +6,7 @@ using System.Reflection;
 using System;
 
 
+[CustomPropertyDrawer(typeof(StringSound))]
 [CustomPropertyDrawer(typeof(StringSprite))]
 public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 {

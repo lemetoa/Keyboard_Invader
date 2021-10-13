@@ -32,7 +32,8 @@ public class BossKeyCap : MonoBehaviour
         GameState.onReset += Disable;
         //생명 게이지의 생성 및 초기화
         store = GameObject.Find("StoreObj");
-        store.gameObject.SetActive(false);
+        if(store !=null)
+            store.gameObject.SetActive(false);
         slider = GameObject.Find("MainCanvas").transform.GetChild(7).GetComponent<Slider>();
         slider.value = 1;
         slider.gameObject.SetActive(true);
@@ -40,7 +41,7 @@ public class BossKeyCap : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         KeyStand keystand = (KeyStand)Random.Range(1, 26);
 
-        keypad = Datas.KeyPadData.KeyPadDataMap["0"];
+        keypad = Datas.KeyPadData.KeyPadDataMap["enemy"];
         currentLife = life;
     }
 
@@ -55,8 +56,11 @@ public class BossKeyCap : MonoBehaviour
     {
         currentLife = life;
         slider.gameObject.SetActive(false);
-        store.transform.position = this.transform.position;
-        store.gameObject.SetActive(true);
+        if (store !=null)
+        {
+            store.transform.position = this.transform.position;
+            store.gameObject.SetActive(true);
+        }
         GameState.onReset -= Disable;
         if (gameObject !=null)
         {

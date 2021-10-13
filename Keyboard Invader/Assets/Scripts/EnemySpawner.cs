@@ -62,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
                 if (levelTimer > instance.levelUpCycle)
                 {
                     instance.spawnCount++;
-                    levelTimer -= instance.spawnRate;
+                    levelTimer -= instance.levelUpCycle;
                 }
 
                 // if 타이머

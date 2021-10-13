@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027e38f0f20b70d4ba4d937777df2a30, type: 3}
+  m_Name: bgm
+  m_EditorClassIdentifier: 
+  sounds:
+    m_keys:
+    - electronic-senses-beyond-jupiter
+    - fsm-team-escp-abyss
+    - glitch-miles-from-home
+    - Main
+    m_values:
+    - {fileID: 8300000, guid: ab73c331e3ed2744eb0bb430696a352a, type: 3}
+    - {fileID: 8300000, guid: 767ab4e4bb3ee934eb14f7bcffb860df, type: 3}
+    - {fileID: 8300000, guid: c32f0b8e18911bd43b1e6d3505e0dea7, type: 3}
+    - {fileID: 8300000, guid: be8362b68e681174ca7bf0b6c6b90c99, type: 3}

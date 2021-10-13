@@ -43,6 +43,7 @@ namespace Datas
 		public Vector2 positionOffset;
 		public Boolean randomPosition;
 		public Boolean isChild;
+		public String audio;
   
 
 #region fuctions

@@ -52,7 +52,7 @@ public class EnemyKeyCap : MonoBehaviour
         KeyStand keystand = (KeyStand)Random.Range(1, 26);
         tmpro.text = keystand.ToString();
 
-        keypad = Datas.KeyPadData.KeyPadDataMap["0"];
+        keypad = Datas.KeyPadData.KeyPadDataMap["enemy"];
         currentLife = life;
     }
     private void OnEnable()
@@ -81,6 +81,8 @@ public class EnemyKeyCap : MonoBehaviour
 
     protected virtual void Disable()
     {
+        int random = Random.Range(1, 5);
+        SoundManager.PlaySfx(SoundManager.GetSoundFx("explosion_small_0"+random.ToString()));
         currentLife = life;
         hpBar.SetActive(false);
         GameState.onReset -= Disable;
@@ -169,7 +171,7 @@ public class EnemyKeyCap : MonoBehaviour
             if (keypad != null)
             {
                 ProjectileManager.Shoot(transform, keypad.onFirstShot, gameObject.layer);
-                nextShotTime = Time.time + 1f / keypad.fireRate;
+                nextShotTime = Time.time + 2f;
             }
         }
     }
@@ -192,7 +194,7 @@ public class EnemyKeyCap : MonoBehaviour
             if (currentLife <= 0)
             {
                 KeyCap key = ObjectPooler.SpawnFromPool<KeyCap>(ObjectPooler.PoolingType.KeyCap, transform.position, true);
-                key.SetKeyPad("1L1", KeyCode.L);
+                key.SetKeyPad("0", KeyCode.Space);
                 key.gameObject.layer = 13;
                 Score.AddScore(100f);
                 GameResult.enemyDestroyed++;

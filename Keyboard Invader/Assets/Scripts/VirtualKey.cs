@@ -101,6 +101,8 @@ public class VirtualKey : MonoBehaviour
     }
     private void OnMouseDown()
     {
+
+        SoundManager.PlaySfx(SoundManager.GetSoundFx("KeyboardEquip"));
         //마우스위치 산출
         var realMouse = _camera.ScreenToWorldPoint(Input.mousePosition);
         var mousepos = realMouse - transform.position;

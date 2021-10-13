@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027e38f0f20b70d4ba4d937777df2a30, type: 3}
+  m_Name: soundFX
+  m_EditorClassIdentifier: 
+  sounds:
+    m_keys:
+    - BossAlert
+    - BossExp
+    - explosion_small_01
+    - explosion_small_02
+    - explosion_small_03
+    - explosion_small_04
+    - KeyboardCollect
+    - KeyboardEquip
+    - PlayerExp
+    - Upgrade
+    - CrystalExp
+    - CrystalShot
+    - DoubleShot
+    - NormalShot
+    - SpreadShot
+    m_values:
+    - {fileID: 8300000, guid: 52ed9fa63ca6a984b97c35c8069763eb, type: 3}
+    - {fileID: 8300000, guid: 631d45232e1c01149bc02225de663507, type: 3}
+    - {fileID: 8300000, guid: 79bd9ad15f131b644982cfb34c29ac9b, type: 3}
+    - {fileID: 8300000, guid: 963d893c4a164ef4ebaec5c24d2a0bb1, type: 3}
+    - {fileID: 8300000, guid: a1e52e36b0c491d4bad03030538954e4, type: 3}
+    - {fileID: 8300000, guid: e025ee0b33e6d8840881bd140d3a28d0, type: 3}
+    - {fileID: 8300000, guid: 25924bae8a895e342933a507bc0d4cc7, type: 3}
+    - {fileID: 8300000, guid: f93263e73f5c96d4f84fbdb189f2edfd, type: 3}
+    - {fileID: 8300000, guid: 432cfd070cd24d34784668207825d67a, type: 3}
+    - {fileID: 8300000, guid: a4d81dd2c243bf0409e8da44a0a19811, type: 3}
+    - {fileID: 8300000, guid: db920e5357e90ec44bdfc56c7fd8e6d0, type: 3}
+    - {fileID: 8300000, guid: 744e794839d62764d93f2e08f868152c, type: 3}
+    - {fileID: 8300000, guid: d47e50241cd238145b5f14966616bc93, type: 3}
+    - {fileID: 8300000, guid: 324d6635188324b46ac64d37d87801dc, type: 3}
+    - {fileID: 8300000, guid: 880b67e91291f684aa7fc0a003e3b03a, type: 3}

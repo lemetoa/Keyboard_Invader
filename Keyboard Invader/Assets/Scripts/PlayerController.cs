@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
             virtualKey.SetUnit(playerUnit);
         }
         playerUnit.onDeath += delegate {
+            SoundManager.PlaySfx(SoundManager.GetSoundFx("PlayerExp"));
             GameResult.ShowResult();
             GameState.ChangeState(GameStateType.GameOver);
             playerUnit.SetMove(false);
@@ -154,7 +155,7 @@ public class PlayerController : MonoBehaviour
     {
         if (1 << collision.gameObject.layer == LayerMask.GetMask("DroppedKey"))
         {
-            Debug.Log("key touched");
+            SoundManager.PlaySfx(SoundManager.GetSoundFx("KeyboardCollect"));
             if (collision.gameObject.TryGetComponent(out KeyCap _cap))
             {
                 virtualKey.GainTmpKey(_cap);
