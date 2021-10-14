@@ -233,12 +233,10 @@ public class Unit : MonoBehaviour
 
     }
 
-
-    //특정 키가 눌렸을때
-
-    //특정 키를 누르고 있을 때
-
-    //특정 키를 땠을 때
+    private void OnEnable()
+    {
+        dying = false;
+    }
 
     IEnumerator DeadEffect()
     {

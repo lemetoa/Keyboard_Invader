@@ -37,6 +37,7 @@ public class GameResult : MonoBehaviour
         EnemySpawner.ResetSpawner();
 
         Score.SaveHighScore();
+        Debug.Log(instance.timeTmpro.text);
         instance.timeTmpro.text = playTime.ToString("00:00");
         instance.enemyTmpro.text = enemyDestroyed.ToString("0");
         instance.bossTmpro.text = bossDestroyed.ToString("0");
@@ -88,7 +89,7 @@ public class GameResult : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-        }
+        }resultScreen.SetActive(false);
     }
 
     // Update is called once per frame

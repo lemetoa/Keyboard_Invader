@@ -65,6 +65,7 @@ public class GameState : MonoBehaviour
         GameResult.timeBonus = true;
         PlayerController.instance.transform.position = PlayerController.startPosition;
         PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space);
+        PlayerController.instance.playerUnit.dying = false;
         EnemySpawner.StartSpawn();
 
     }
@@ -75,6 +76,10 @@ public class GameState : MonoBehaviour
         onReset.Invoke();
     }
 
+    public void ToggleFullscreen(bool toggle)
+    {
+        Screen.fullScreen = toggle;
+    }
     private static GameStateType lastType = GameStateType.MainMenu; //마지막 상태 기억
     
     public void EscClicked()

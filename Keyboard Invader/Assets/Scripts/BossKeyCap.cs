@@ -205,7 +205,7 @@ public class BossKeyCap : MonoBehaviour
             {
 
                 Score.AddScore(1000f);
-                GameResult.enemyDestroyed++;
+                GameResult.bossDestroyed++;
                 StartCoroutine(DeathEffect());
                 
             }
