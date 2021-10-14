@@ -14,9 +14,12 @@ public class EnemySpawner : MonoBehaviour
     
 
     public float levelUpCycle; //레벨업 주기
+    
+    public float bossCycle;
+    float BossSpawnTime;
 
     private static float levelTimer = 0f; //레벨업 타이머
-
+    static float bossTimer;
 
     public float distance = 20; //적 스폰 거리
 
@@ -59,17 +62,20 @@ public class EnemySpawner : MonoBehaviour
                 }
                 //레벨업 타이머
                 levelTimer += instance.spawnRate;
+                bossTimer += instance.spawnRate;
                 if (levelTimer > instance.levelUpCycle)
                 {
                     instance.spawnCount++;
                     levelTimer -= instance.levelUpCycle;
                 }
 
-                // if 타이머
+                if (bossTimer > instance.bossCycle)
                 {
+                    instance.spawnCount++;
+                    bossTimer -= instance.bossCycle;
                     SpawnBoss();
                 }
-
+                
             }
 
         }

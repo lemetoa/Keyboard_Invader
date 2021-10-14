@@ -8098,6 +8098,7 @@ MonoBehaviour:
   spawnRate: 2
   spawnCount: 1
   levelUpCycle: 20
+  bossCycle: 90
   distance: 15
   player: {fileID: 1318390612}
 --- !u!4 &2106619574

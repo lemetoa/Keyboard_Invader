@@ -23,7 +23,9 @@ public class KeyCap : MonoBehaviour
     protected GameObject keycapInfo;
 
     Collider2D coll;
-    
+    Rigidbody2D rb;
+    int x;
+    int y;
 
     public void SetKeyPad(string code, KeyCode _stand = KeyCode.None)//키패드 속성 변경
     {
@@ -90,6 +92,8 @@ public class KeyCap : MonoBehaviour
 
         SetKeyPad(keyPadCode, Stand);
 
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+
         //아이템 키일 경우 게임 재시작 시 비활성화
         GameState.onReset += delegate {
             if (gameObject.layer ==13)
@@ -98,12 +102,24 @@ public class KeyCap : MonoBehaviour
             } };
     }
 
+    private void OnEnable()
+    {
+        x = Random.Range(-1, 2);
+        y = Random.Range(-1, 2);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (EditorApplication.isPlaying)
         {
             SetKeyPad(keyPadCode, Stand);
+        }
+
+        if (m_Master == null)
+        {
+
+            rb.velocity = new Vector2(x, y);
         }
     }
 
