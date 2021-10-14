@@ -35,17 +35,20 @@ public class KeyCap : MonoBehaviour
         {
             keypad = Datas.KeyPadData.KeyPadDataMap[code];
 
+            //Debug.Log(_stand);
             if (_stand != KeyCode.None)
             {
-                if (keypad.stand == "Space" || keypad.stand == "space")
+                if (_stand == KeyCode.Space)
                 {
                     tmpro.text = "";
                     Stand = KeyCode.Space;
                 }
                 else
                 {
-                    tmpro.text = keypad.stand;
-                    Stand = (KeyCode)97 - 'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
+                    Debug.Log(_stand);
+                    tmpro.text = _stand.ToString();
+                    Stand = _stand;
+                    //Stand = (KeyCode)97 - 'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
                                                                  // Debug.Log(Stand);
                 }
             }
@@ -111,10 +114,13 @@ public class KeyCap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
+
         if (EditorApplication.isPlaying)
         {
             SetKeyPad(keyPadCode, Stand);
         }
+#endif
 
         if (m_Master == null)
         {

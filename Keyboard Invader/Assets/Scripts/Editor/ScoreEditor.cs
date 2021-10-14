@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿
+#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
 [CustomEditor(typeof(Score))]
 public class ScoreEditor : Editor
 {
@@ -12,7 +13,9 @@ public class ScoreEditor : Editor
         if (GUILayout.Button("최고기록 초기화", GUILayout.MinWidth(100)))
         {
             Score.ResetHighScore();
-        } 
+        }
 
     }
 }
+
+#endif

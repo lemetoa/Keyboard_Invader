@@ -25,6 +25,7 @@ MonoBehaviour:
     - 2L11
     - 0
     - 2E
+    - floating-crystal_38313
     m_values:
     - {fileID: 21300000, guid: bf5493c3e85e8134f8c841d7382af959, type: 3}
     - {fileID: 21300000, guid: e0c73917b3501194cac678ac3f60537d, type: 3}
@@ -37,3 +38,4 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 81f43c0678e0e0b4ca5cb9bd5fb1daac, type: 3}
     - {fileID: 21300000, guid: 24d6f3524cc8fef4387ef8ccda71c036, type: 3}
     - {fileID: 21300000, guid: 34c0e6b740298e441ad61a0abdea62dc, type: 3}
+    - {fileID: 21300000, guid: fdd672fc910b5ff4eb3c9bfdba821b2a, type: 3}

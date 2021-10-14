@@ -234,10 +234,12 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
         if (EditorApplication.isPlaying)
         {
             UpdateStands();
         }
+#endif
     }
 
     private void FixedUpdate()

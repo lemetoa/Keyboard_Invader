@@ -25,6 +25,30 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform player;
 
+    [SerializeField]
+    private List<KeyCode> dropPool = new List<KeyCode>();
+    //적 드롭 풀
+    private void ResetPool()
+    {
+        dropPool.Clear();
+        for (int i = 0; i < 26; i++)
+        {
+            dropPool.Add((KeyCode)(int)KeyCode.A + i);
+        }
+    }
+    public static KeyCode GetPool()
+    {
+        if (instance.dropPool.Count == 0)
+        {
+            instance.ResetPool();
+        }
+        int _rand = Random.Range(0, instance.dropPool.Count);
+        KeyCode _key = instance.dropPool[_rand];
+        instance.dropPool.RemoveAt(_rand);
+
+        return _key;
+    }
+
     private static void Spawn()
     {
         //플레이어 위치에서 무작위방향으로 n만큼 떨어진 거리에 생성

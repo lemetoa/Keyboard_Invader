@@ -39,6 +39,8 @@ public class EnemyKeyCap : MonoBehaviour
     //생명 수치에 따라 fillAmount 속성을 변경할 Image
     private Image hpBarImage;
     GameObject hpBar;
+
+    KeyCode keystand;
     void Start()
     {
         GameState.onReset += Disable;
@@ -49,7 +51,9 @@ public class EnemyKeyCap : MonoBehaviour
 
         target = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        KeyStand keystand = (KeyStand)Random.Range(1, 26);
+        // = (KeyStand)Random.Range(1, 26);
+        keystand = EnemySpawner.GetPool();
+        //keystand = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z + 1);
         tmpro.text = keystand.ToString();
 
         keypad = Datas.KeyPadData.KeyPadDataMap["enemy"];
@@ -171,7 +175,14 @@ public class EnemyKeyCap : MonoBehaviour
             if (keypad != null)
             {
                 ProjectileManager.Shoot(transform, keypad.onFirstShot, gameObject.layer);
-                nextShotTime = Time.time + 2f;
+                if (Enemy == Type.Normal)
+                {
+                    nextShotTime = Time.time + 2f;
+                }
+                else
+                {
+                    nextShotTime = Time.time + 1f;
+                }
             }
         }
     }
@@ -194,7 +205,16 @@ public class EnemyKeyCap : MonoBehaviour
             if (currentLife <= 0)
             {
                 KeyCap key = ObjectPooler.SpawnFromPool<KeyCap>(ObjectPooler.PoolingType.KeyCap, transform.position, true);
-                key.SetKeyPad("0", KeyCode.Space);
+
+                //랜덤드랍
+                /*
+                int _rand = Random.Range((int)KeyCode.A, (int)KeyCode.Z + 1);
+                Debug.Log((KeyCode)_rand);*/
+
+                key.SetKeyPad("0", keystand);
+                
+
+
                 key.gameObject.layer = 13;
                 Score.AddScore(100f);
                 GameResult.enemyDestroyed++;
