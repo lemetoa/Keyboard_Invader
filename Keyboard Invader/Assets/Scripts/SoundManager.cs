@@ -52,6 +52,29 @@ public class SoundManager : MonoBehaviour
     {
         instance.bgm.clip = _clip;
         instance.bgm.Play();
+    }  
+    //무작위 배경음악 재생
+    public static void PlayRandomBgm()
+    { 
+        if (instance.bgm.clip == GetBgm("Main"))
+        {
+            int _rand = Random.Range(0, 3);
+            switch (_rand)
+            {
+                case 0:
+                    PlayBgm(GetBgm("electronic-senses-beyond-jupiter"));
+                    break;
+                case 1:
+                    PlayBgm(GetBgm("fsm-team-escp-abyss"));
+                    break;
+                case 2:
+                    PlayBgm(GetBgm("glitch-miles-from-home"));
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
     //효과음 재생
@@ -84,11 +107,14 @@ public class SoundManager : MonoBehaviour
         return audio;
     }
 
+
     public void BgmVolume(float value)
     {
         bgmMixer.audioMixer.SetFloat("Bgm",Mathf.Log10(value) * 20);
         Debug.Log(Mathf.Log10(value));
     }
+
+
     public void SfxVolume(float value)
     {
         bgmMixer.audioMixer.SetFloat("Sfx", Mathf.Log10(value) * 20);
@@ -96,7 +122,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayBgm(bgmDB.GetSound("fsm-team-escp-abyss"));
+        PlayBgm(GetBgm("Main"));
     }
 
     // Update is called once per frame

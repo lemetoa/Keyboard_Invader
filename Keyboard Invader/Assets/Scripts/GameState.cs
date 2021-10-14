@@ -23,9 +23,10 @@ public class GameState : MonoBehaviour
                 Score.ResetCurScore();
                 instance.mainMenuAnim.ResetTrigger("Start Trigger");
                 instance.mainMenuAnim.SetTrigger("MainMenu Trigger");
-
+                SoundManager.PlayBgm(SoundManager.GetBgm("Main"));
                 break;
             case GameStateType.Playing:
+                SoundManager.PlayRandomBgm();
                 Time.timeScale = 1f;
                 break;
             case GameStateType.Shopping:

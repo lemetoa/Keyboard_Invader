@@ -14,7 +14,7 @@ public class Score : MonoBehaviour
     public static bool highUpdated = false; //이번에 최고기록 갱신했는지
 
     [SerializeField]
-    public TextMeshProUGUI scoreText,scoreNumber;
+    public TextMeshProUGUI scoreText,scoreNumber,highScoreText;
     [SerializeField]
     Animator anim;
 
@@ -90,5 +90,6 @@ public class Score : MonoBehaviour
         {
             AddScore(1 * Time.deltaTime * Time.timeScale);
         }
+        highScoreText.text = "HighScore\n" + highScore.ToString("0");
     }
 }

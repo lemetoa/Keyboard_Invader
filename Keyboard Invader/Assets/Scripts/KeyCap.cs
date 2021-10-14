@@ -27,6 +27,7 @@ public class KeyCap : MonoBehaviour
     int x;
     int y;
 
+    private float enableTime;
     public void SetKeyPad(string code, KeyCode _stand = KeyCode.None)//키패드 속성 변경
     {
         keyPadCode = code;
@@ -45,7 +46,7 @@ public class KeyCap : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(_stand);
+                    //Debug.Log(_stand);
                     tmpro.text = _stand.ToString();
                     Stand = _stand;
                     //Stand = (KeyCode)97 - 'A' + keypad.stand[0]; //알파벳을 키코드로 바꿈
@@ -88,6 +89,7 @@ public class KeyCap : MonoBehaviour
     private bool isCharged;         //차지완료됐는지
     private float chargeTime;       //차지 완료되는 시간 
 
+    
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -107,6 +109,8 @@ public class KeyCap : MonoBehaviour
 
     private void OnEnable()
     {
+        enableTime = Time.time;
+
         x = Random.Range(-1, 2);
         y = Random.Range(-1, 2);
     }
@@ -121,7 +125,11 @@ public class KeyCap : MonoBehaviour
             SetKeyPad(keyPadCode, Stand);
         }
 #endif
-
+        //30초지나면 아이템 사라짐
+        if (gameObject.layer == 13 && Time.time > enableTime + 30f)
+        {
+            gameObject.SetActive(false);
+        }
         if (m_Master == null)
         {
 
