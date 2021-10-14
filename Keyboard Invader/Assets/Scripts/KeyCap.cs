@@ -31,7 +31,7 @@ public class KeyCap : MonoBehaviour
     public void SetKeyPad(string code, KeyCode _stand = KeyCode.None)//키패드 속성 변경
     {
         keyPadCode = code;
-        //Debug.Log("키패드 " + keyPadCode);
+        // Debug.Log("키패드 " + keyPadCode);
         if (Datas.KeyPadData.KeyPadDataMap.ContainsKey(code))
         {
             keypad = Datas.KeyPadData.KeyPadDataMap[code];
@@ -205,7 +205,7 @@ public class KeyCap : MonoBehaviour
             return;
         }
            
-        if (m_Master != null && Stand != KeyCode.Space)
+        if (m_Master != null)
         {
             if(Datas.GameData.GameDataList[1].intValue > 0) // 구매 아이템 선택시
             {
@@ -221,7 +221,7 @@ public class KeyCap : MonoBehaviour
                     keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(Datas.KeyPadData.KeyPadDataMap[keyPadCode].sprite);
                 }
             }
-            else
+            else if (Stand != KeyCode.Space)
             {
                 //Debug.Log("crashed!");
                 Datas.GameData.GameDataList[0].intValue += getCost;

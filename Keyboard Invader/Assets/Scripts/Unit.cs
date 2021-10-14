@@ -19,11 +19,15 @@ public class Unit : MonoBehaviour
 
     private Vector2 targetPos;
     
+    [SerializeField]
+    GameObject keyParticle;
+
     public void SetTarget(Vector2 _vector)
     {
         targetPos = _vector;
     }
 
+    public bool dying;
 
     //보유중인 키패드와 위치
     public Dictionary<Vector2Int, KeyCap> keyPads = new Dictionary<Vector2Int, KeyCap>();
@@ -75,7 +79,11 @@ public class Unit : MonoBehaviour
 
             if (position == Vector2Int.zero)//파괴된 곳이 코어면
             {
-                onDeath.Invoke();
+                StartCoroutine(DeadEffect());   
+            }
+            else
+            {
+                var Obj = Instantiate(keyParticle, this.transform.position, Quaternion.identity);
                 
             }
             Vector2Int connected = position + Vector2Int.up;
@@ -98,10 +106,11 @@ public class Unit : MonoBehaviour
             {
                 RemoveKeyPad(connected);
             }
-
             UpdateStands();
         }
     }
+
+
 
     //코어랑 붙어있는가?
     private bool IsConectedtoCore(Vector2Int _pos)
@@ -223,13 +232,26 @@ public class Unit : MonoBehaviour
         return result;
 
     }
-    
+
 
     //특정 키가 눌렸을때
-    
+
     //특정 키를 누르고 있을 때
 
     //특정 키를 땠을 때
+
+    IEnumerator DeadEffect()
+    {
+        Debug.Log("죽음");
+        dying = true;
+        for (int i = 0; i < 3; i++)
+        {
+            var Obj = Instantiate(keyParticle, this.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f);
+
+        }
+        onDeath.Invoke();
+    }
 
 
     // Start is called before the first frame update
@@ -253,7 +275,6 @@ public class Unit : MonoBehaviour
     {
         if (isMoving)
         {
-
             transform.position += (Vector3)(targetPos - (Vector2)transform.position).normalized * moveSpeed * Time.fixedDeltaTime;
         }
     }

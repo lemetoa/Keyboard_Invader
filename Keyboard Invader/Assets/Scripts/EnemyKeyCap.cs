@@ -39,6 +39,8 @@ public class EnemyKeyCap : MonoBehaviour
     //생명 수치에 따라 fillAmount 속성을 변경할 Image
     private Image hpBarImage;
     GameObject hpBar;
+    [SerializeField]
+    GameObject[] particleObj;
 
     KeyCode keystand;
     void Start()
@@ -219,6 +221,12 @@ public class EnemyKeyCap : MonoBehaviour
                 Score.AddScore(100f);
                 GameResult.enemyDestroyed++;
                 hpBarImage.transform.parent.gameObject.SetActive(false);
+                int ranParticle = Random.Range(0, particleObj.Length);
+                
+                var Obj = Instantiate(particleObj[ranParticle], this.transform.position, Quaternion.identity);
+                ParticleSystem particle = Obj.GetComponentInChildren<ParticleSystem>();
+                var main = particle.main;
+                main.simulationSpeed = 3;
                 Disable();
             }
         }

@@ -26,6 +26,9 @@ public class BossKeyCap : MonoBehaviour
 
     private GameObject store;
 
+    [SerializeField]
+    GameObject keyParticle;
+
     bool nextPhase;
     void Start()
     {
@@ -148,6 +151,28 @@ public class BossKeyCap : MonoBehaviour
         }
     }
     
+    IEnumerator DeathEffect()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int x = Random.Range(-1, 2);
+            int y = Random.Range(-1, 2);
+            var Obj = Instantiate(keyParticle, transform.position + new Vector3(x, y), Quaternion.identity);
+            yield return new WaitForSeconds(0.3f);
+
+        }
+        Disable();
+    }
+
+    void ArmBreak()
+    {
+        for (int i = 0; i < arms.Length; i++)
+        {
+            var Obj = Instantiate(keyParticle, arms[i].transform.position, Quaternion.identity);
+
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (1 << collision.gameObject.layer == LayerMask.GetMask("PlayerProjectile"))
@@ -164,6 +189,10 @@ public class BossKeyCap : MonoBehaviour
 
             if(slider.value <= 0.5)
             {
+                if (!nextPhase)
+                {
+                    ArmBreak();
+                }
                 nextPhase = true;
                 for (int i = 0; i < arms.Length; i++)
                 {
@@ -177,8 +206,8 @@ public class BossKeyCap : MonoBehaviour
 
                 Score.AddScore(1000f);
                 GameResult.enemyDestroyed++;
-
-                Disable();
+                StartCoroutine(DeathEffect());
+                
             }
         }
     }

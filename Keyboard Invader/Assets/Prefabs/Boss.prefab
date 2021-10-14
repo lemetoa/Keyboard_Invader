@@ -349,6 +349,8 @@ MonoBehaviour:
   - {fileID: 7165031514184544909}
   - {fileID: 7165031514301465170}
   nextPhaseArms: {fileID: 3647556441247113169}
+  keyParticle: {fileID: 3060058301583221444, guid: 0eddd48f7d5204e40b96a3980d053ec8,
+    type: 3}
 --- !u!1 &6617401614653803441
 GameObject:
   m_ObjectHideFlags: 0

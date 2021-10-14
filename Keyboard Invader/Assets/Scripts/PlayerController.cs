@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public List<KeyCode> keys = new List<KeyCode>();
 
+    
+
     private void Awake()
     {
         instance = this;
@@ -44,10 +46,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.PlaySfx(SoundManager.GetSoundFx("PlayerExp"));
             GameResult.ShowResult();
             GameState.ChangeState(GameStateType.GameOver);
-            playerUnit.SetMove(false);
         };
-
-
     }
     // Update is called once per frame
     void Update()
@@ -103,7 +102,7 @@ public class PlayerController : MonoBehaviour
             // player.up = mousePos - (Vector2)transform.position;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !playerUnit.dying)
         {
             playerUnit.SetMove(true);
             playerUnit.SetTarget(mousePos);
@@ -147,6 +146,7 @@ public class PlayerController : MonoBehaviour
         
 
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
