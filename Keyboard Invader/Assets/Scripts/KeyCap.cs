@@ -214,6 +214,12 @@ public class KeyCap : MonoBehaviour
                 Datas.GameData.GameDataList[1].intValue = 0;
                 GameObject cancelBuyButton = GameObject.Find("CancelBuyButton");
                 cancelBuyButton.SetActive(false);
+
+                keycapInfo.transform.GetChild(0).gameObject.SetActive(true);
+                {
+                    keycapInfo.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = Datas.KeyPadData.KeyPadDataMap[keyPadCode].Description;
+                    keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(Datas.KeyPadData.KeyPadDataMap[keyPadCode].sprite);
+                }
             }
             else
             {
@@ -236,12 +242,9 @@ public class KeyCap : MonoBehaviour
         if (GameState.current == GameStateType.Shopping)
         {
             keycapInfo.transform.GetChild(0).gameObject.SetActive(true);
-
-            
             {
-                keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("laser1");
-                keycapInfo.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = Datas.KeyPadData.KeyPadDataMap[keyPadCode].Description; ;
-
+                keycapInfo.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = Datas.KeyPadData.KeyPadDataMap[keyPadCode].Description;
+                keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(Datas.KeyPadData.KeyPadDataMap[keyPadCode].sprite);
             }
         }
     }

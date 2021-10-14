@@ -198,6 +198,13 @@ public class Unit : MonoBehaviour
         }
 
         cam.currSize = stands.Count + cam.startSize;
+        int sizeDiff = (int)cam.currSize - (int)cam.startSize;
+        cam.currCameraOffset = cam.storeCameraOffset;
+        for (int i = 0; i < sizeDiff; i++)
+        {
+            cam.currCameraOffset.x -= 1.5f;
+            cam.currCameraOffset.y += 0.5f;
+        }
         //Debug.Log(sum);
     }
 

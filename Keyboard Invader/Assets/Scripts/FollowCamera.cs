@@ -9,6 +9,8 @@ public class FollowCamera : MonoBehaviour
     [HideInInspector]
     public float currSize;
     public Vector3 storeCameraOffset;
+    
+    public Vector3 currCameraOffset;
     public List<BackgroundScroll> backgrounds = new List<BackgroundScroll>();
 
     private Camera _main;
@@ -17,6 +19,7 @@ public class FollowCamera : MonoBehaviour
     {
         _main = Camera.main;
         _main.orthographicSize = startSize;
+        currCameraOffset = storeCameraOffset;
 
         foreach (var item in backgrounds)
         {

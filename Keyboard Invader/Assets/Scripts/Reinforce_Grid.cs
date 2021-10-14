@@ -60,7 +60,7 @@ public class Reinforce_Grid : MonoBehaviour
 
         description = transform.parent.GetChild(1).GetComponent<Text>();
         description.text = Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description;
-
+        image.sprite = Resources.Load<Sprite>(Datas.KeyPadData.KeyPadDataMap[keyPadStr].sprite);
     }
 
     public void Reinforce()

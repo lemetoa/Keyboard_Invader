@@ -1700,7 +1700,8 @@ MonoBehaviour:
   player: {fileID: 1318390610}
   startSize: 5
   currSize: 0
-  storeCameraOffset: {x: -10, y: 2, z: 0}
+  storeCameraOffset: {x: -3, y: 1, z: 0}
+  currCameraOffset: {x: 0, y: 0, z: 0}
   backgrounds:
   - {fileID: 1859769342}
   - {fileID: 515845396}
@@ -1731,7 +1732,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1755,7 +1756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -8, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4388,13 +4389,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdd672fc910b5ff4eb3c9bfdba821b2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88e80b32a80e8d0468315a922da4eb0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

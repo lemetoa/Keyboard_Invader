@@ -52,7 +52,7 @@ public class Store : MonoBehaviour
         uiMgr.OpenPopUp(2);
         uiMgr.RandomProjectile();
         Time.timeScale = 0;
-        cam.transform.position = cam.transform.position + cam.storeCameraOffset;
+        cam.transform.position = cam.transform.position + cam.currCameraOffset;
     }
 
     public void StoreOut()

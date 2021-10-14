@@ -664,7 +664,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Database\SpriteDatabase\SpriteData.cs" />
+    <Compile Include="Assets\Database\SoundsDB\SoundDatabase.cs" />
+    <Compile Include="Assets\Database\SpritesDB\SpriteData.cs" />
     <Compile Include="Assets\Fx Explosion Pack\Script\DestroyEffect.cs" />
     <Compile Include="Assets\Fx Explosion Pack\Script\csLightControl.cs" />
     <Compile Include="Assets\Fx Explosion Pack\Script\csMouseOrbit.cs" />
@@ -686,6 +687,7 @@
     <Compile Include="Assets\Scripts\ProjectileManager.cs" />
     <Compile Include="Assets\Scripts\Reinforce_Grid.cs" />
     <Compile Include="Assets\Scripts\ShooterData.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Store.cs" />
     <Compile Include="Assets\Scripts\System\GSManager.cs" />
     <Compile Include="Assets\Scripts\System\ObjectPooler.cs" />
