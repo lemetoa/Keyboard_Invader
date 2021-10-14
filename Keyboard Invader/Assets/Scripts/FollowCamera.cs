@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FollowCamera : MonoBehaviour
 {
     public GameObject player;
@@ -24,6 +25,7 @@ public class FollowCamera : MonoBehaviour
         foreach (var item in backgrounds)
         {
              item.bgScale = _main.orthographicSize * 0.5f;
+            //item.render.material.mainTexture.
              item.FitSize();
         }
     }

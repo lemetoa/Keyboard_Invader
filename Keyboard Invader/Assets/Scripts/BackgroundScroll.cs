@@ -6,7 +6,7 @@ public class BackgroundScroll : MonoBehaviour
 {
     public Transform _transform;
     [SerializeField]
-    private MeshRenderer render;
+    public MeshRenderer render;
     public Vector2 center = new Vector2(0f, 0f);
 
     private float xyRatio;
