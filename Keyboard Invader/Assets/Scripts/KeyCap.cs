@@ -144,9 +144,9 @@ public class KeyCap : MonoBehaviour
     //누르고있을때
     public void OnUsing()
     {
-        if (keypad.autoFire && Shootable())
+        if (keypad != null)
         {
-            if (keypad != null)
+            if (keypad.autoFire && Shootable())
             {
                 ProjectileManager.Shoot(transform, keypad.onFirstShot, gameObject.layer);
                 nextShotTime = Time.time + 1f / keypad.fireRate;

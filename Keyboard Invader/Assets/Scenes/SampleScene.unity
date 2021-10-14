@@ -4824,7 +4824,7 @@ MonoBehaviour:
   _transform: {fileID: 0}
   render: {fileID: 0}
   center: {x: 0, y: 0}
-  bgScale: 1.8
+  bgScale: 5.94
   bgScrollingSpeed: {x: 1, y: 1}
 --- !u!114 &1313806130
 MonoBehaviour:

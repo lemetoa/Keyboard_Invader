@@ -39,6 +39,7 @@ namespace Datas
 		public String onFirstShot;
 		public String onShooting;
 		public String onEndShot;
+		public String sprite;
   
 
 #region fuctions
