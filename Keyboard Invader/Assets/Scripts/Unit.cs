@@ -243,7 +243,7 @@ public class Unit : MonoBehaviour
 
     IEnumerator DeadEffect()
     {
-        Debug.Log("죽음");
+        //Debug.Log("죽음");
         dying = true;
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {

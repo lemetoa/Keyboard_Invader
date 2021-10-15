@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
 
     private static void SpawnBoss()
     {
+        Debug.Log("boss");
         //플레이어 위치에서 무작위방향으로 n만큼 떨어진 거리에 생성
         Vector2 pos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))
             .normalized * instance.distance + (Vector2)instance.player.position;
@@ -85,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Spawn();
-        int spawnCount = 1;
+        //int spawnCount = 1;
         
         while (true)
         {
@@ -96,16 +98,17 @@ public class EnemySpawner : MonoBehaviour
 
             if (GameState.current == GameStateType.Playing && !bossKilled)
             {
-                for (int i = 0; i < Random.Range(1, 1 + spawnCount); i++)
+                for (int i = 0; i < Random.Range(1, 1 + instance.spawnCount); i++)
                 {
                     Spawn();
                 }
                 //레벨업 타이머
                 levelTimer += instance.spawnRate;
                 bossTimer += instance.spawnRate;
+                Debug.Log(bossTimer);
                 if (levelTimer > instance.levelUpCycle)
                 {
-                    spawnCount++;
+                    instance.spawnCount++;
                     levelTimer -= instance.levelUpCycle;
                 }
 
@@ -160,6 +163,15 @@ public class EnemySpawner : MonoBehaviour
         levelTimer = 0f;
         instance.distance = instance.baseDistance;
     }
+
+    [SerializeField]
+    private Slider slider;
+    public static Slider GetSlider()
+    {
+        return instance.slider;
+    }
+
+
     private void Awake()
     {
         baseDistance = distance;

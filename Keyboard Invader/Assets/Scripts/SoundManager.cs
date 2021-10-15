@@ -80,7 +80,6 @@ public class SoundManager : MonoBehaviour
     //효과음 재생
     public static void PlaySfx(AudioClip _clip)
     {
-        Debug.Log("sound");
         var audio = instance.GetSfxAudio();
         audio.clip = _clip;
         audio.Play();

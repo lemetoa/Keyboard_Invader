@@ -38,7 +38,7 @@ public class BossKeyCap : MonoBehaviour
         store = GameObject.Find("StoreObj");
         if(store !=null)
             store.gameObject.SetActive(false);*/
-        slider = GameObject.Find("MainCanvas").transform.GetChild(7).GetComponent<Slider>();
+        slider = EnemySpawner.GetSlider();
         slider.value = 1;
         slider.gameObject.SetActive(true);
         target = GameObject.Find("Player").transform;

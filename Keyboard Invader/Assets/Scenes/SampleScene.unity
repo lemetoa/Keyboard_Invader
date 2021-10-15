@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -293}
+  m_AnchoredPosition: {x: 150, y: -317}
   m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45084371
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2091,7 +2091,7 @@ GameObject:
   - component: {fileID: 610454892}
   - component: {fileID: 610454893}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Boss Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3610,7 +3610,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &968874016
 GameObject:
@@ -4345,7 +4345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 496.88, y: -424}
+  m_AnchoredPosition: {x: 150, y: -317}
   m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113009335
@@ -4361,7 +4361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5551,7 +5551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e0c73917b3501194cac678ac3f60537d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4e0815fe3bedda4e99be455711f8c1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6381,7 +6381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e0c73917b3501194cac678ac3f60537d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4e0815fe3bedda4e99be455711f8c1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6632,7 +6632,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6673,11 +6673,11 @@ RectTransform:
   m_Father: {fileID: 1172243082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 228, y: 116}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -54, y: 116}
   m_SizeDelta: {x: 285.1278, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1567916591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7069,7 +7069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 496.88, y: -1024}
+  m_AnchoredPosition: {x: 150, y: -317}
   m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602253091
@@ -7085,7 +7085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7274,7 +7274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7644,24 +7644,26 @@ MonoBehaviour:
 
     https://www.flaticon.com/free-icon/double-arrow_130897
 
+    https://icon-library.com/icon/bolt-icon-16.html.html%3EBolt
+    Icon # 337181
+
     Songs
 
-    Artifacts
-    In The Sky by Dox | https://soundcloud.com/dox-free-music
+    Artifacts In The Sky by Dox | https://soundcloud.com/dox-free-music
 
-    Abyss by FSM Team
-    feat. | e s c p | https://escp-music.bandcamp.com/
+    Abyss
+    by FSM Team feat. | e s c p | https://escp-music.bandcamp.com/
 
-    Miles From Home by Glitch
-    | https://soundcloud.com/glitch
+    Miles From
+    Home by Glitch | https://soundcloud.com/glitch
 
-    Beyond Jupiter by Electronic Senses | https://soundcloud.com/electronicsenses
+    Beyond Jupiter by Electronic
+    Senses | https://soundcloud.com/electronicsenses
 
-    Music
-    promoted by https://www.free-stock-music.com/
+    Music promoted by https://www.free-stock-music.com/
 
-    Attribution-NoDerivs 3.0 Unported
-    (CC BY-ND 3.0)'
+    Attribution-NoDerivs
+    3.0 Unported (CC BY-ND 3.0)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -8381,7 +8383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e0c73917b3501194cac678ac3f60537d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4e0815fe3bedda4e99be455711f8c1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9369,6 +9371,7 @@ MonoBehaviour:
   distance: 10
   player: {fileID: 1318390612}
   dropPool: 
+  slider: {fileID: 610454893}
 --- !u!4 &2106619574
 Transform:
   m_ObjectHideFlags: 0
@@ -9381,7 +9384,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131395300
 GameObject:
@@ -9578,7 +9581,7 @@ PrefabInstance:
     - target: {fileID: 1561796275112859881, guid: f33550eaa4ecf9b48a4797d9154bf4c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1561796275112859881, guid: f33550eaa4ecf9b48a4797d9154bf4c8,
         type: 3}
@@ -10002,7 +10005,7 @@ PrefabInstance:
     - target: {fileID: 5667072819706733950, guid: 8f965fb056eacdf498e5929c3d21afd8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5667072819706733950, guid: 8f965fb056eacdf498e5929c3d21afd8,
         type: 3}
