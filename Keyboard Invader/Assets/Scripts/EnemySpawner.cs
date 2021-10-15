@@ -114,9 +114,9 @@ public class EnemySpawner : MonoBehaviour
 
                 if (bossTimer > instance.bossCycle && !isSpawn)
                 {
-                    instance.spawnCount++;
                     bossTimer -= instance.bossCycle;
                     SpawnBoss();
+                    StopSpawn();
                     isSpawn = true;
                 }
                 

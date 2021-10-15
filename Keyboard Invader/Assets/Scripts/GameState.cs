@@ -20,14 +20,21 @@ public class GameState : MonoBehaviour
     public Toggle toggle;
 
     [SerializeField]
+    private GameObject mainGo;
+    [SerializeField]
     private GameStateType gameState;
 
     static GameObject player;
     public static void ChangeState(GameStateType _state)
     {
+        if (_state != GameStateType.MainMenu)
+        {
+            instance.mainGo.SetActive(false);
+        }
         switch (_state)
         {
             case GameStateType.MainMenu:
+                instance.mainGo.SetActive(true);
                 Time.timeScale = 0f;
                 Score.ResetCurScore();
                 EnemySpawner.ResetSpawner();
@@ -78,10 +85,10 @@ public class GameState : MonoBehaviour
     {
         onAnimtion = true;
         instance.mainMenuAnim.SetTrigger("Start Trigger");
-        yield return new WaitForSecondsRealtime(1);
+        yield return null;
         StartGame();
         onAnimtion = false;
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return null;
     }
 
     public static void StartGame()  //게임 시작
