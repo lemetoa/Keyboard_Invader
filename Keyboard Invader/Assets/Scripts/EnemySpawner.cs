@@ -24,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
 
     public float distance = 20; //적 스폰 거리
 
+    private float baseDistance;
+
     public Transform player;
 
     [SerializeField]
@@ -83,7 +85,8 @@ public class EnemySpawner : MonoBehaviour
             
             //주기적으로 적 스폰
             yield return new WaitForSeconds(instance.spawnRate);
-            instance.distance = 20 + instance._camera.orthographicSize;
+            instance.distance = instance.baseDistance + instance._camera.orthographicSize;
+
             if (GameState.current == GameStateType.Playing)
             {
                 for (int i = 0; i < Random.Range(1, 1 + spawnCount); i++)
@@ -135,6 +138,8 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Awake()
     {
+        baseDistance = distance;
+
         instance = this;
         if (player == null)
         {

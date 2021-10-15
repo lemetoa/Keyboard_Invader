@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEditor;
+using System.Linq;
+
 
 public class KeyCap : MonoBehaviour
 {
@@ -176,6 +178,21 @@ public class KeyCap : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (1 << collision.gameObject.layer == LayerMask.GetMask("DroppedKey"))
+        {
+            if (m_Master.TryGetComponent(out PlayerController _pc))
+            {
+
+                SoundManager.PlaySfx(SoundManager.GetSoundFx("KeyboardCollect"));
+                if (collision.gameObject.TryGetComponent(out KeyCap _cap))
+                {
+                    _pc.virtualKey.GainTmpKey(_cap);
+                    _pc.virtualKey.SetVirtualKeys(m_Master.keyPads.Keys.ToList());
+                    _pc.virtualKey.SetKeysActive(true);
+                }
+                collision.gameObject.SetActive(false);
+            }
+        }
         if (1<<collision.gameObject.layer == LayerMask.GetMask("EnemyProjectile"))
         {
             
@@ -191,6 +208,24 @@ public class KeyCap : MonoBehaviour
                 Vector2Int _pos = new Vector2Int((int)transform.localPosition.x, (int)transform.localPosition.y);
                 m_Master.RemoveKeyPad(_pos);
                 
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (1 << collision.gameObject.layer == LayerMask.GetMask("DroppedKey"))
+        {
+            if (m_Master.TryGetComponent(out PlayerController _pc))
+            {
+
+                SoundManager.PlaySfx(SoundManager.GetSoundFx("KeyboardCollect"));
+                if (collision.gameObject.TryGetComponent(out KeyCap _cap))
+                {
+                    _pc.virtualKey.GainTmpKey(_cap);
+                    _pc.virtualKey.SetVirtualKeys(m_Master.keyPads.Keys.ToList());
+                    _pc.virtualKey.SetKeysActive(true);
+                }
+                collision.gameObject.SetActive(false);
             }
         }
     }

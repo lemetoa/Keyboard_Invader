@@ -156,8 +156,11 @@ public class EnemyKeyCap : MonoBehaviour
         Vector3 toTarg = (target.position - transform.position).normalized;
         rb.velocity = toTarg;
 
-        OnUseStart();
-
+        //30보다 가까우면
+        if (Vector2.SqrMagnitude(transform.position - target.position) < 900)
+        {
+            OnUseStart();
+        }
     }
     private float nextShotTime = 0; //다음 발사 가능한 시간
     private bool Shootable()
