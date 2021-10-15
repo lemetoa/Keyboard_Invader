@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
 {
     private static GameState instance;
     public static GameStateType current { get; protected set; }
+    static GameObject player;
     public static void ChangeState(GameStateType _state)
     {
         switch (_state)
@@ -56,17 +57,27 @@ public class GameState : MonoBehaviour
 
     public Animator mainMenuAnim;
 
-    public static void StartGame()  //게임 시작
+    public static IEnumerator AnimationWait()
     {
-        ResetGame();
-        Score.curScore = 0;
         instance.mainMenuAnim.SetTrigger("Start Trigger");
+        yield return new WaitForSeconds(1);
         ChangeState(GameStateType.Playing);
+        player.SetActive(true);
         GameResult.timeBonus = true;
         PlayerController.instance.transform.position = PlayerController.startPosition;
         PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space);
         PlayerController.instance.playerUnit.dying = false;
         EnemySpawner.StartSpawn();
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    public static void StartGame()  //게임 시작
+    {
+        ResetGame();
+       
+        Score.curScore = 0;
+        instance.StartCoroutine(AnimationWait());
+        
 
     }
     //게임 리셋
@@ -132,6 +143,12 @@ public class GameState : MonoBehaviour
         }
 
         instance.uiObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        player.SetActive(false);
     }
 
     private void Update()

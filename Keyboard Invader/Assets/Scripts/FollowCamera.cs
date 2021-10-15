@@ -32,8 +32,12 @@ public class FollowCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 playerPos = player.transform.position;
-        transform.position = new Vector3(playerPos.x, playerPos.y, this.transform.position.z);
+        if(GameState.current == GameStateType.Playing)
+        {
+            Vector3 playerPos = player.transform.position;
+            transform.position = new Vector3(playerPos.x, playerPos.y, this.transform.position.z);
+
+        }
 
         if(currSize < startSize)
             _main.orthographicSize = startSize;
