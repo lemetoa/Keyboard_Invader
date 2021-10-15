@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public List<KeyCode> keys = new List<KeyCode>();
 
-    
+    SpriteRenderer sprite;
 
     private void Awake()
     {
@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
             GameResult.ShowResult();
             GameState.ChangeState(GameStateType.GameOver);
         };
+        sprite = GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
     void Update()
@@ -105,7 +106,15 @@ public class PlayerController : MonoBehaviour
             }
             // player.up = mousePos - (Vector2)transform.position;
         }
-
+        /*
+        if (playerUnit.dying)
+        {
+            for (int i = 0; i < this.transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+        */
         if (Input.GetMouseButton(0) && !playerUnit.dying)
         {
             playerUnit.SetMove(true);

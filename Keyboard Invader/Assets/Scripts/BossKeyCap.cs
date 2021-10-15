@@ -206,11 +206,12 @@ public class BossKeyCap : MonoBehaviour
             }
             // hpBarImage.fillAmount = currentLife / life;
 
-            if (currentLife <= 0)
+            if (currentLife <= 0 && !EnemySpawner.bossKilled)
             {
 
                 Score.AddScore(1000f);
                 GameResult.bossDestroyed++;
+                EnemySpawner.bossKilled = true;
                 StartCoroutine(DeathEffect());
                 
             }

@@ -86,7 +86,7 @@ public class Score : MonoBehaviour
     }
     private void Update()
     {
-        if (GameState.current == GameStateType.Playing)
+        if (GameState.current == GameStateType.Playing && !EnemySpawner.bossKilled)
         {
             AddScore(1 * Time.deltaTime * Time.timeScale);
         }

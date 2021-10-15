@@ -22,6 +22,10 @@ public class EnemySpawner : MonoBehaviour
     private static float levelTimer = 0f; //레벨업 타이머
     static float bossTimer;
 
+    [HideInInspector]
+    public static bool bossKilled;
+
+
     public float distance = 20; //적 스폰 거리
 
     private float baseDistance;
@@ -87,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(instance.spawnRate);
             instance.distance = instance.baseDistance + instance._camera.orthographicSize;
 
-            if (GameState.current == GameStateType.Playing)
+            if (GameState.current == GameStateType.Playing && !bossKilled)
             {
                 for (int i = 0; i < Random.Range(1, 1 + spawnCount); i++)
                 {

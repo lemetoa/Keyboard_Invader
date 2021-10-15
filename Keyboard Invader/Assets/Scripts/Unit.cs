@@ -245,12 +245,9 @@ public class Unit : MonoBehaviour
     {
         Debug.Log("죽음");
         dying = true;
-        for (int i = 0; i < 3; i++)
-        {
-            var Obj = Instantiate(keyParticle, this.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(1f);
-
-        }
+        var Obj = Instantiate(keyParticle, this.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(3f);
+        
         onDeath.Invoke();
     }
 

@@ -63,7 +63,7 @@ public class Store : MonoBehaviour
 
     public void StoreIn()
     {
-        uiMgr.OpenPopUp(2);
+        uiMgr.OpenPopUp(1);
         uiMgr.RandomProjectile();
         Time.timeScale = 0;
         cam.transform.position = cam.transform.position + cam.currCameraOffset;
@@ -76,5 +76,6 @@ public class Store : MonoBehaviour
         GameState.ChangeState(GameStateType.Playing);
         this.gameObject.SetActive(false);
         ChangeBackground();
+        EnemySpawner.bossKilled = false;
     }
 }
