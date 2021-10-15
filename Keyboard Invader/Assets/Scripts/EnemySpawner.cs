@@ -148,10 +148,14 @@ public class EnemySpawner : MonoBehaviour
     //레벨 초기화
     public static void ResetSpawner()
     {
+        if (spawnCycle !=null)
+        {
+            instance.StopCoroutine(spawnCycle);
+        }
         instance.spawnCount = 1;
-
+        bossTimer = 0f;
         levelTimer = 0f;
-       
+        instance.distance = instance.baseDistance;
     }
     private void Awake()
     {
