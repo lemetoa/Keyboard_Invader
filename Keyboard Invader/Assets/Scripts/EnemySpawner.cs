@@ -120,6 +120,15 @@ public class EnemySpawner : MonoBehaviour
         instance.StartCoroutine(spawnCycle);
 
     }
+    public static void ContinueSpawn()
+    {
+        if (spawnCycle != null)
+        {
+            instance.StartCoroutine(spawnCycle);
+
+        }
+    }
+
     public static void StopSpawn()
     {
         if (spawnCycle !=null)

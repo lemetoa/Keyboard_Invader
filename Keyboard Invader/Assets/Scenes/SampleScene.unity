@@ -3509,6 +3509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877197910920f164e97c6270359e08b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
   uiObject: {fileID: 1861279347}
   mainMenuAnim: {fileID: 212416689}
 --- !u!4 &959638193
@@ -5105,7 +5106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!1 &1358870666
 GameObject:
   m_ObjectHideFlags: 0

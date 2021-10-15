@@ -14,6 +14,10 @@ public class GameState : MonoBehaviour
 {
     private static GameState instance;
     public static GameStateType current { get; protected set; }
+
+    [SerializeField]
+    private GameStateType gameState;
+
     static GameObject player;
     public static void ChangeState(GameStateType _state)
     {
@@ -28,6 +32,7 @@ public class GameState : MonoBehaviour
                 break;
             case GameStateType.Playing:
                 SoundManager.PlayRandomBgm();
+                EnemySpawner.ContinueSpawn();
                 Time.timeScale = 1f;
                 break;
             case GameStateType.Shopping:
@@ -57,10 +62,21 @@ public class GameState : MonoBehaviour
 
     public Animator mainMenuAnim;
 
+    private IEnumerator animationWait;
     public static IEnumerator AnimationWait()
     {
         instance.mainMenuAnim.SetTrigger("Start Trigger");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("스타트");
+        StartGame();
+        yield return new WaitForSecondsRealtime(0.5f);
+    }
+
+    public static void StartGame()  //게임 시작
+    {
+        ResetGame();
+        Score.curScore = 0;
+
         ChangeState(GameStateType.Playing);
         player.SetActive(true);
         GameResult.timeBonus = true;
@@ -68,17 +84,18 @@ public class GameState : MonoBehaviour
         PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space);
         PlayerController.instance.playerUnit.dying = false;
         EnemySpawner.StartSpawn();
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    public static void StartGame()  //게임 시작
-    {
-        ResetGame();
-       
-        Score.curScore = 0;
-        instance.StartCoroutine(AnimationWait());
         
 
+    }
+
+    public void StartAnimation()
+    {
+        if (instance.animationWait !=null)
+        {
+            StopCoroutine(instance.animationWait);
+        }
+        instance.animationWait = AnimationWait();
+        instance.StartCoroutine(instance.animationWait);
     }
     //게임 리셋
     public static void ResetGame()
@@ -153,12 +170,13 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
+        gameState = current;
         if (current== GameStateType.MainMenu && Input.GetKeyDown(KeyCode.Space))   //게임 시작
         {/*
             mainMenuAnim.SetTrigger("Start Trigger");
             GameState.ChangeState(GameStateType.Playing);
             GameResult.timeBonus = true;*/
-            StartGame();
+            StartAnimation();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
