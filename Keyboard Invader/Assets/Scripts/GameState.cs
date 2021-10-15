@@ -11,6 +11,7 @@ public enum GameStateType
     Shopping,
     GameOver,
     Setting,
+    Tutorial,
 }
 public class GameState : MonoBehaviour
 {
@@ -56,6 +57,9 @@ public class GameState : MonoBehaviour
                 Time.timeScale = 0f;
                 break;
             case GameStateType.Setting:
+                Time.timeScale = 0f;
+                break;
+            case GameStateType.Tutorial:
                 Time.timeScale = 0f;
                 break;
             default:
