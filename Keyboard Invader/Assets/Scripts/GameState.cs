@@ -25,6 +25,7 @@ public class GameState : MonoBehaviour
     private GameStateType gameState;
 
     static GameObject player;
+    static GameObject keyHistory;
     public static void ChangeState(GameStateType _state)
     {
         if (_state != GameStateType.MainMenu)
@@ -97,6 +98,7 @@ public class GameState : MonoBehaviour
         Score.curScore = 0;
 
         ChangeState(GameStateType.Playing);
+        keyHistory.SetActive(true);
         player.SetActive(true);
         for (int i = 0; i < player.transform.childCount; i++)
         {
@@ -207,6 +209,8 @@ public class GameState : MonoBehaviour
     {
         player = GameObject.Find("Player");
         player.SetActive(false);
+        keyHistory = GameObject.Find("keyHistory");
+        keyHistory.SetActive(false);
     }
 
     private void Update()

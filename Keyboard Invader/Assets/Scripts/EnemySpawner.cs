@@ -28,6 +28,8 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector]
     public static bool bossKilled;
 
+    public static float initialBossLife = 5;
+    public static float bossLife;
 
     public float distance = 20; //적 스폰 거리
 
@@ -162,6 +164,7 @@ public class EnemySpawner : MonoBehaviour
         bossTimer = 0f;
         levelTimer = 0f;
         instance.distance = instance.baseDistance;
+        bossLife = initialBossLife;
     }
 
     [SerializeField]
@@ -186,6 +189,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bossLife = initialBossLife;
         //StartSpawn();
     }
     

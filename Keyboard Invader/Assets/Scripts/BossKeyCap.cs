@@ -12,8 +12,6 @@ public class BossKeyCap : MonoBehaviour
     Transform target;
     [SerializeField]
     private float rotSpeed;
-    [SerializeField]
-    private float life;
     private float currentLife;
 
     private Slider slider;
@@ -46,7 +44,7 @@ public class BossKeyCap : MonoBehaviour
         KeyStand keystand = (KeyStand)Random.Range(1, 26);
 
         keypad = Datas.KeyPadData.KeyPadDataMap["enemy"];
-        currentLife = life;
+        currentLife = EnemySpawner.bossLife;
     }
 
     private void OnDisable()
@@ -58,7 +56,8 @@ public class BossKeyCap : MonoBehaviour
 
     protected virtual void Disable()
     {
-        currentLife = life;
+        EnemySpawner.bossLife += EnemySpawner.bossLife / 5;
+        currentLife = EnemySpawner.bossLife;
         slider.gameObject.SetActive(false);
         if (Store.Portal() !=null)
         {
@@ -190,7 +189,7 @@ public class BossKeyCap : MonoBehaviour
             }
 
             currentLife -= _projectile.damage;
-            slider.value = currentLife / life;
+            slider.value = currentLife / EnemySpawner.bossLife;
 
             if(slider.value <= 0.5)
             {
