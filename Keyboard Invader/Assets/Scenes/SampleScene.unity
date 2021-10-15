@@ -8718,11 +8718,11 @@ MonoBehaviour:
     type: 3}
   enemyPrefabs:
   - {fileID: 1610724766922037581, guid: afa41bae0ba432e46b8ee191a4fc8bc2, type: 3}
-  spawnRate: 7
+  spawnRate: 10
   spawnCount: 1
   levelUpCycle: 30
-  bossCycle: 20
-  distance: 15
+  bossCycle: 60
+  distance: 10
   player: {fileID: 1318390612}
   dropPool: 
 --- !u!4 &2106619574

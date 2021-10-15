@@ -183,7 +183,7 @@ public class EnemyKeyCap : MonoBehaviour
                 }
                 else
                 {
-                    nextShotTime = Time.time + 1f;
+                    nextShotTime = Time.time + 0.5f;
                 }
             }
         }
