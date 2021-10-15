@@ -79,6 +79,10 @@ public class GameState : MonoBehaviour
 
         ChangeState(GameStateType.Playing);
         player.SetActive(true);
+        for (int i = 0; i < player.transform.childCount; i++)
+        {
+            player.transform.GetChild(i).gameObject.SetActive(true);
+        }
         GameResult.timeBonus = true;
         PlayerController.instance.transform.position = PlayerController.startPosition;
         PlayerController.instance.playerUnit.AddKeyCap(Vector2Int.zero, "0", KeyCode.Space);

@@ -245,6 +245,10 @@ public class Unit : MonoBehaviour
     {
         Debug.Log("죽음");
         dying = true;
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
         var Obj = Instantiate(keyParticle, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(3f);
         

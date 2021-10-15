@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using System.Linq;
 
 public class VirtualKey : MonoBehaviour
@@ -19,6 +20,8 @@ public class VirtualKey : MonoBehaviour
     private Transform children;
 
     //public List<GameObject> virtualKey = new List<GameObject>();
+    [SerializeField]
+    TextMeshProUGUI tmpKeyCodeTxt;
     public KeyCode tmpStand;
     public string tmpKeyCode;      //임시로 획득한 키
 
@@ -55,6 +58,7 @@ public class VirtualKey : MonoBehaviour
     public void GainTmpKey(KeyCap _key)
     {
         tmpStand = _key.Stand;
+        tmpKeyCodeTxt.text = tmpStand.ToString();
         tmpKeyCode = _key.keypad.index;
     }
 
@@ -122,5 +126,6 @@ public class VirtualKey : MonoBehaviour
             item.SetActive(false);
         }*/
         myUnit.AddKeyCap(intPos, tmpKeyCode,tmpStand);
+        tmpKeyCodeTxt.text = "";
     }
 }

@@ -77,5 +77,6 @@ public class Store : MonoBehaviour
         this.gameObject.SetActive(false);
         ChangeBackground();
         EnemySpawner.bossKilled = false;
+        EnemySpawner.isSpawn = false;
     }
 }

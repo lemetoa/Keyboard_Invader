@@ -29,8 +29,9 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         
         if (timer > duration)
         {
-            btn.onClick.Invoke();
+            isClicked = false;
             timer = 0;
+            btn.onClick.Invoke();
         }
         
         image.fillAmount = timer / duration;
