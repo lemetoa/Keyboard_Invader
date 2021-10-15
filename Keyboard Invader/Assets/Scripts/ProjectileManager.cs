@@ -45,13 +45,13 @@ public class ProjectileManager : MonoBehaviour
         {
             return;
         }
-        
+
+        //사운드
+        SoundManager.PlaySfx(SoundManager.GetSoundFx(shooter.audio));
         for (int i = 0; i < shooter.multiShot; i++)
         {
             var proj = ObjectPooler.SpawnFromPool<Projectile>(ObjectPooler.PoolingType.Projectile, _transform.position,true);
 
-            //사운드
-            SoundManager.PlaySfx(SoundManager.GetSoundFx(shooter.audio));
             //8,9면 9 10,11이면 11
             if (_layer == 8 || _layer == 9)
             {

@@ -24,7 +24,7 @@ public class BossKeyCap : MonoBehaviour
     [SerializeField]
     private Transform nextPhaseArms;
 
-    private GameObject store;
+    // private GameObject store;
 
     [SerializeField]
     GameObject keyParticle;
@@ -34,9 +34,10 @@ public class BossKeyCap : MonoBehaviour
     {
         GameState.onReset += Disable;
         //생명 게이지의 생성 및 초기화
+        /*
         store = GameObject.Find("StoreObj");
         if(store !=null)
-            store.gameObject.SetActive(false);
+            store.gameObject.SetActive(false);*/
         slider = GameObject.Find("MainCanvas").transform.GetChild(7).GetComponent<Slider>();
         slider.value = 1;
         slider.gameObject.SetActive(true);
@@ -59,10 +60,10 @@ public class BossKeyCap : MonoBehaviour
     {
         currentLife = life;
         slider.gameObject.SetActive(false);
-        if (store !=null)
+        if (Store.Portal() !=null)
         {
-            store.transform.position = this.transform.position;
-            store.gameObject.SetActive(true);
+            Store.Portal().transform.position = this.transform.position;
+            Store.Portal().gameObject.SetActive(true);
         }
         GameState.onReset -= Disable;
         if (gameObject !=null)
@@ -121,6 +122,10 @@ public class BossKeyCap : MonoBehaviour
 
     void Phase_Two_Shoot()
     {
+        if (currentLife<=0f)
+        {
+            return;
+        }
         for (int i = 0; i < nextPhaseArms.childCount; i++)
         {
             ProjectileManager.Shoot(nextPhaseArms.GetChild(i), keypad.onFirstShot, gameObject.layer);

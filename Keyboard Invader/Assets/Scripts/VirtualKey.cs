@@ -62,8 +62,8 @@ public class VirtualKey : MonoBehaviour
     {
         var newKey = ObjectPooler.SpawnFromPool(ObjectPooler.PoolingType.VirtualKeyCap, transform.position);
         newKey.transform.SetParent(children);
-        newKey.transform.localPosition = (Vector2)_pos;
         newKey.transform.localRotation = Quaternion.identity;
+        newKey.transform.localPosition = (Vector2)_pos;
         virtualKeys.Add(_pos, newKey);
     }
 

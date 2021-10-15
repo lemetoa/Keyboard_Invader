@@ -101,7 +101,7 @@ public class OnClick : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Random Start");
+        //Debug.Log("Random Start");
         List<int> list = new List<int>();
 
         while (list.Count < 3)

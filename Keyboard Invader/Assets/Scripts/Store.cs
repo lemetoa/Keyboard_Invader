@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
+    private static GameObject _go;
+    public static GameObject Portal()
+    {
+        return _go;
+    }
     public OnClick uiMgr;
     FollowCamera cam;
     [SerializeField]
@@ -12,6 +17,15 @@ public class Store : MonoBehaviour
     private Material[] material;
     int level;
 
+    private void Awake()
+    {
+        if (_go ==null)
+        {
+            _go = this.gameObject;
+            _go.SetActive(false);
+        }
+        Debug.Log(_go);
+    }
     // Start is called before the first frame update
     void Start()
     {

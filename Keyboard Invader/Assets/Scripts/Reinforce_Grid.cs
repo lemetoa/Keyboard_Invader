@@ -74,7 +74,7 @@ public class Reinforce_Grid : MonoBehaviour
             cancelBuyButton.SetActive(true);
 
             Datas.GameData.GameDataList[2].strValue = keyPadStr;
-            Debug.Log("str값 " + Datas.GameData.GameDataList[2].strValue);
+            //Debug.Log("str값 " + Datas.GameData.GameDataList[2].strValue);
             Debug.Log(Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description);
             // Datas.GameData.GameDataList[2].strValue 참조해 능력 부여
 

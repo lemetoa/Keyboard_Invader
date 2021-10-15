@@ -93,14 +93,14 @@ public class PlayerController : MonoBehaviour
         }
         Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        if (!Input.GetKey(KeyCode.LeftControl))
+        if (!Input.GetMouseButton(1))
         {
 
             Vector2 dir = mousePos - (Vector2)transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             if (Mathf.Abs(transform.rotation.eulerAngles.z + 90f - angle)%360 > 2f)
             {
-                Debug.Log(Mathf.RoundToInt(angle) + ","+ Mathf.RoundToInt( transform.rotation.eulerAngles.z+90f));
+                //Debug.Log(Mathf.RoundToInt(angle) + ","+ Mathf.RoundToInt( transform.rotation.eulerAngles.z+90f));
                 transform.rotation = Quaternion.Slerp(transform.localRotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotateSpeed);
             }
             // player.up = mousePos - (Vector2)transform.position;
