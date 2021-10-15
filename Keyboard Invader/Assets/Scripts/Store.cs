@@ -15,6 +15,8 @@ public class Store : MonoBehaviour
     Transform backgroundParent;
     [SerializeField]
     private Material[] material;
+    [SerializeField]
+    private GameObject tmpKey;
     int level;
 
     private void Awake()
@@ -70,6 +72,7 @@ public class Store : MonoBehaviour
         uiMgr.RandomProjectile();
         Time.timeScale = 0;
         cam.transform.position = cam.transform.position + cam.currCameraOffset;
+        tmpKey.SetActive(false);
     }
 
     public void StoreOut()
@@ -77,6 +80,7 @@ public class Store : MonoBehaviour
         Time.timeScale = 1;
         Datas.GameData.GameDataList[1].intValue = 0;
         GameState.ChangeState(GameStateType.Playing);
+        tmpKey.SetActive(true);
         this.gameObject.SetActive(false);
         ChangeBackground();
         EnemySpawner.bossKilled = false;

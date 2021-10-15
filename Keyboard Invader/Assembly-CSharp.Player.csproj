@@ -695,6 +695,7 @@
     <Compile Include="Assets\Scripts\System\ZGTypeDescription.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\CopyRight.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\GameResult.cs" />
+    <Compile Include="Assets\Scripts\UiDisplay\HoldButton.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\HpBar.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\Score.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
