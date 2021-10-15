@@ -250,6 +250,7 @@ public class Unit : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
         var Obj = Instantiate(keyParticle, this.transform.position, Quaternion.identity);
+        SoundManager.PlaySfx(SoundManager.GetSoundFx("PlayerExp"));
         yield return new WaitForSeconds(3f);
         
         onDeath.Invoke();

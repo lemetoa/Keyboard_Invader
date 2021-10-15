@@ -52,8 +52,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineInspector
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -327,7 +330,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: ef9f221fabf028da4b15552999edce42
+      Hash: a33a1efd11420606dfe5b23f0e26948b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameState
@@ -861,7 +864,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 8a506b00e16e917d8633e767efa97388
+      Hash: 25944aaac74b1515c3b3daf920835841
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VirtualKey
@@ -952,5 +955,5 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Admin/Documents/GitHub/Keyboard_Invader/Keyboard Invader/Build/Keyboard
-    Invader.exe
+  playerPath: "D:/UnityWork/\uD0A4\uBCF4\uB4DC\uC778\uBCA0\uC774\uB354 \uBE4C\uB4DC\uD30C\uC77C/Keyboard
+    Invader.exe"

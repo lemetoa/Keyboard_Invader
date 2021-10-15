@@ -22,9 +22,9 @@ public class Store : MonoBehaviour
         if (_go ==null)
         {
             _go = this.gameObject;
+            GameState.onReset += delegate { _go.SetActive(false); };
             _go.SetActive(false);
         }
-        Debug.Log(_go);
     }
     // Start is called before the first frame update
     void Start()
@@ -41,9 +41,12 @@ public class Store : MonoBehaviour
 
     public void ChangeBackground()
     {
-        for (int i = 0; i < backgroundParent.childCount - 1; i++)
+        for (int i = 0; i < backgroundParent.childCount; i++)
         {
-            backgroundParent.GetChild(i).GetComponent<Renderer>().material = material[level];
+            if (backgroundParent.GetChild(i).TryGetComponent(out Renderer _render))
+            {
+                _render.material = material[level];
+            }  
         }
         level++;
         uiMgr.dontDoAgain = false;

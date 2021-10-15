@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum GameStateType
 {
@@ -15,6 +17,8 @@ public class GameState : MonoBehaviour
     private static GameState instance;
     public static GameStateType current { get; protected set; }
 
+    public Toggle toggle;
+
     [SerializeField]
     private GameStateType gameState;
 
@@ -26,8 +30,9 @@ public class GameState : MonoBehaviour
             case GameStateType.MainMenu:
                 Time.timeScale = 0f;
                 Score.ResetCurScore();
-                instance.mainMenuAnim.ResetTrigger("Start Trigger");
+                EnemySpawner.ResetSpawner();
                 instance.mainMenuAnim.SetTrigger("MainMenu Trigger");
+                instance.mainMenuAnim.ResetTrigger("Start Trigger");
                 SoundManager.PlayBgm(SoundManager.GetBgm("Main"));
                 break;
             case GameStateType.Playing:
@@ -59,16 +64,23 @@ public class GameState : MonoBehaviour
         // Debug.Log("Core destroyed!");
     });
 
+    public void ClearButton()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    private static bool onAnimtion = false;
 
     public Animator mainMenuAnim;
 
     private IEnumerator animationWait;
     public static IEnumerator AnimationWait()
     {
+        onAnimtion = true;
         instance.mainMenuAnim.SetTrigger("Start Trigger");
         yield return new WaitForSecondsRealtime(1);
-        Debug.Log("스타트");
         StartGame();
+        onAnimtion = false;
         yield return new WaitForSecondsRealtime(0.5f);
     }
 
@@ -110,6 +122,14 @@ public class GameState : MonoBehaviour
 
     public void ToggleFullscreen(bool toggle)
     {
+        if (toggle)
+        {
+            PlayerPrefs.SetInt("FullScreen", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("FullScreen", 0);
+        }
         Screen.fullScreen = toggle;
     }
     private static GameStateType lastType = GameStateType.MainMenu; //마지막 상태 기억
@@ -140,7 +160,6 @@ public class GameState : MonoBehaviour
             Time.timeScale = 0f;
             instance.uiObject.SetActive(true);
             lastType = current;
-            Debug.Log(current);
             ChangeState(GameStateType.Setting);
         }
 
@@ -158,6 +177,17 @@ public class GameState : MonoBehaviour
     }
     private void Awake()
     {
+        //게임 시작시 전체화면
+        if (PlayerPrefs.GetInt("FullScreen",1) == 1)
+        {
+            toggle.isOn = true;
+            Screen.fullScreen = true;
+        }
+        else
+        {
+            toggle.isOn = false;
+            Screen.fullScreen = false;
+        }
         if (instance == null)
         {
             instance = this;
@@ -174,8 +204,9 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         gameState = current;
-        if (current== GameStateType.MainMenu && Input.GetKeyDown(KeyCode.Space))   //게임 시작
+        if (current== GameStateType.MainMenu && Input.GetKeyDown(KeyCode.Space) && !onAnimtion)   //게임 시작
         {/*
             mainMenuAnim.SetTrigger("Start Trigger");
             GameState.ChangeState(GameStateType.Playing);

@@ -41,9 +41,17 @@ public class PlayerController : MonoBehaviour
             virtualKey.SetUnit(playerUnit);
         }
         playerUnit.onDeath += delegate {
-            SoundManager.PlaySfx(SoundManager.GetSoundFx("PlayerExp"));
+            //SoundManager.PlaySfx(SoundManager.GetSoundFx("PlayerExp"));
             GameResult.ShowResult();
             GameState.ChangeState(GameStateType.GameOver);
+        };
+
+        GameState.onReset += delegate {
+            //SoundManager.PlaySfx(SoundManager.GetSoundFx("PlayerExp"));
+            playerUnit.RemoveKeyPad(Vector2Int.right);
+            playerUnit.RemoveKeyPad(Vector2Int.up);
+            playerUnit.RemoveKeyPad(Vector2Int.left);
+            playerUnit.RemoveKeyPad(Vector2Int.down);
         };
     }
     // Update is called once per frame

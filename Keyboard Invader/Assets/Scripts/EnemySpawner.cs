@@ -152,6 +152,9 @@ public class EnemySpawner : MonoBehaviour
         {
             instance.StopCoroutine(spawnCycle);
         }
+        //spawnCycle = SpawnCycle();
+        //instance.StartCoroutine(spawnCycle);
+
         instance.spawnCount = 1;
         bossTimer = 0f;
         levelTimer = 0f;

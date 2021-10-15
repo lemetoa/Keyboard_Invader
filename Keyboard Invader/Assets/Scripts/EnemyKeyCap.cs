@@ -88,7 +88,8 @@ public class EnemyKeyCap : MonoBehaviour
     protected virtual void Disable()
     {
         int random = Random.Range(1, 5);
-        SoundManager.PlaySfx(SoundManager.GetSoundFx("explosion_small_0"+random.ToString()));
+        if(life <=0)
+            SoundManager.PlaySfx(SoundManager.GetSoundFx("explosion_small_0"+random.ToString()));
         currentLife = life;
         hpBar.SetActive(false);
         GameState.onReset -= Disable;
