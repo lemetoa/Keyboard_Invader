@@ -47,7 +47,8 @@ public class Store : MonoBehaviour
         {
             if (backgroundParent.GetChild(i).TryGetComponent(out Renderer _render))
             {
-                _render.material = material[level];
+                Debug.Log("메터리얼 " + level % 3);
+                _render.material = material[level % 3];
             }  
         }
         level++;

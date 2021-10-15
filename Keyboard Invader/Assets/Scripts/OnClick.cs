@@ -136,6 +136,14 @@ public class OnClick : MonoBehaviour
         dontDoAgain = true;
     }
 
+    public void ProjectileOff()
+    {
+        for (int i = 0; i < GridLayout.transform.childCount; i++)
+        {
+            GridLayout.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
     public void DeleteData()
     {
         PlayerPrefs.DeleteAll();

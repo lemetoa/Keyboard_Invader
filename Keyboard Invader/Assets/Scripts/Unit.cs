@@ -212,7 +212,7 @@ public class Unit : MonoBehaviour
             cam.currCameraOffset = cam.storeCameraOffset;
             for (int i = 0; i < sizeDiff; i++)
             {
-                cam.currCameraOffset.x -= 1.5f;
+                cam.currCameraOffset.x -= 3f;
                 cam.currCameraOffset.y += 0.5f;
             }
 
