@@ -18,6 +18,7 @@ public class Store : MonoBehaviour
     [SerializeField]
     private GameObject tmpKey;
     int level;
+    Unit unit;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class Store : MonoBehaviour
     void Start()
     {
         cam = Camera.main.GetComponent<FollowCamera>();
+        unit = GameObject.Find("Player").gameObject.GetComponent<Unit>();
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class Store : MonoBehaviour
     {
         if(col.gameObject.layer == 8)
         {
-            StoreIn();
+            StoreIn(col.gameObject.transform);
             // player = col.GetComponent<PlayerController>();
             // player.SetGameState(GameState.Shopping);
             GameState.ChangeState(GameStateType.Shopping);
@@ -67,12 +69,17 @@ public class Store : MonoBehaviour
     }
 
 
-    public void StoreIn()
+    public void StoreIn(Transform tr)
     {
         uiMgr.OpenPopUp(1);
         uiMgr.RandomProjectile();
+        if(unit.stands.Count > 1)
+            cam.transform.position = cam.transform.position + cam.storeCameraOffset;
+        else
+            cam.transform.position = cam.transform.position + cam.storeCameraOffset_OnlyOne;
+        unit.gameObject.transform.localScale = unit.gameObject.transform.localScale / unit.stands.Count;
         Time.timeScale = 0;
-        cam.transform.position = cam.transform.position + cam.currCameraOffset;
+        Camera.main.orthographicSize = 1.5f;
         tmpKey.SetActive(false);
     }
 
@@ -81,6 +88,7 @@ public class Store : MonoBehaviour
         Time.timeScale = 1;
         Datas.GameData.GameDataList[1].intValue = 0;
         GameState.ChangeState(GameStateType.Playing);
+        unit.gameObject.transform.localScale = Vector3.one;
         tmpKey.SetActive(true);
         this.gameObject.SetActive(false);
         ChangeBackground();

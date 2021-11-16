@@ -1302,9 +1302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1318390610}
   startSize: 5
-  currSize: 0
-  storeCameraOffset: {x: -3, y: 1, z: 0}
-  currCameraOffset: {x: 0, y: 0, z: 0}
+  currSize: 5
+  storeCameraOffset: {x: -1.6, y: 0.375, z: 0}
+  storeCameraOffset_OnlyOne: {x: -0.8, y: 0.375, z: 0}
   backgrounds: []
 --- !u!20 &519420031
 Camera:
@@ -1836,7 +1836,7 @@ RectTransform:
   m_GameObject: {fileID: 590805770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.225, y: 0.225, z: 1}
   m_Children:
   - {fileID: 580584569}
   m_Father: {fileID: 0}
@@ -7018,7 +7018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -54, y: 116}
+  m_AnchoredPosition: {x: -54, y: 137}
   m_SizeDelta: {x: 285.1278, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1567916591
@@ -10171,12 +10171,12 @@ PrefabInstance:
     - target: {fileID: 3635812187047227446, guid: 84653ff15e3c4e44b8a80de1e3aefdc0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3635812187047227446, guid: 84653ff15e3c4e44b8a80de1e3aefdc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3635812187047227446, guid: 84653ff15e3c4e44b8a80de1e3aefdc0,
         type: 3}
