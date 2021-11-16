@@ -262,7 +262,7 @@ public class KeyCap : MonoBehaviour
                 Datas.GameData.GameDataList[0].intValue += getCost;
                 Vector2Int _pos = new Vector2Int((int)transform.localPosition.x, (int)transform.localPosition.y);
                 m_Master.RemoveKeyPad(_pos);
-
+                keycapInfo.transform.GetChild(0).gameObject.SetActive(false);
 
             }
                 Text money = GameObject.Find("CostAmount").GetComponent<Text>();
