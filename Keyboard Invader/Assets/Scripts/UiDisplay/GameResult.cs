@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameResult : MonoBehaviour
 {
@@ -64,9 +65,10 @@ public class GameResult : MonoBehaviour
 
     public void RetryClicked()    // 리트라이 눌렸을때
     {
-        CloseResult();
-        Score.ResetCurScore();
-        GameState.StartGame();
+        SceneManager.LoadScene("PlayScene");
+     //   CloseResult();
+       // Score.ResetCurScore();
+        //GameState.StartGame();
     }
 
 

@@ -100,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (GameState.current == GameStateType.Playing && !bossKilled)
             {
-                for (int i = 0; i < Random.Range(1, 1 + instance.spawnCount); i++)
+                for (int i = 0; i < instance.spawnCount; i++)
                 {
                     Spawn();
                 }
@@ -156,6 +156,7 @@ public class EnemySpawner : MonoBehaviour
         if (spawnCycle !=null)
         {
             instance.StopCoroutine(spawnCycle);
+            spawnCycle = null;
         }
         //spawnCycle = SpawnCycle();
         //instance.StartCoroutine(spawnCycle);

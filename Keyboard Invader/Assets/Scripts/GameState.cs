@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum GameStateType
 {
@@ -23,7 +24,7 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private GameObject mainGo;
     [SerializeField]
-    private GameStateType gameState;
+    private GameStateType initialState = GameStateType.MainMenu;
 
     static GameObject player;
     static GameObject keyHistory;
@@ -91,14 +92,16 @@ public class GameState : MonoBehaviour
         onAnimtion = true;
         instance.mainMenuAnim.SetTrigger("Start Trigger");
         yield return null;
-        StartGame();
+       // StartGame();
+        SceneManager.LoadScene("PlayScene");
+        
         onAnimtion = false;
         yield return null;
     }
 
     public static void StartGame()  //게임 시작
     {
-        ResetGame();
+       // ResetGame();
         Score.curScore = 0;
 
         ChangeState(GameStateType.Playing);
@@ -130,7 +133,7 @@ public class GameState : MonoBehaviour
     public static void ResetGame()
     {
         // 모든 투사체 비활성화
-        onReset.Invoke();
+        //onReset.Invoke();
     }
 
     public void ToggleFullscreen(bool toggle)
@@ -215,12 +218,16 @@ public class GameState : MonoBehaviour
         player.SetActive(false);
         keyHistory = GameObject.Find("keyHistory");
         keyHistory.SetActive(false);
+        if (initialState == GameStateType.Playing)
+        {
+            StartGame();
+        }
     }
 
     private void Update()
     {
         EventSystem.current.SetSelectedGameObject(null);
-        gameState = current;
+        initialState = current;
         if (current== GameStateType.MainMenu && Input.GetKeyDown(KeyCode.Space) && !onAnimtion)   //게임 시작
         {/*
             mainMenuAnim.SetTrigger("Start Trigger");

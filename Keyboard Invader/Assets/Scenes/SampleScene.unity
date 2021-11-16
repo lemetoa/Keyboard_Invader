@@ -1281,6 +1281,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1288,6 +1289,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &519420029
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3528,7 +3537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 2147179153}
   mainGo: {fileID: 1208574199}
-  gameState: 0
+  initialState: 0
   uiObject: {fileID: 1861279347}
   mainMenuAnim: {fileID: 212416689}
 --- !u!4 &959638193
@@ -10528,7 +10537,7 @@ PrefabInstance:
     - target: {fileID: 7695331566343237446, guid: b7b98af457c73364395f6eb14d60a706,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7695331566659826867, guid: b7b98af457c73364395f6eb14d60a706,
         type: 3}
