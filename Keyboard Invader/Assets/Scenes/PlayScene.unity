@@ -2156,9 +2156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0875375ed5e6642bfa28b90358e9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 3
   price: 300
-  sprite: {fileID: 21300000, guid: 4e3912c1388705b4c96ef8accec1cb96, type: 3}
+  sprite: {fileID: 21300000, guid: 5cb47f7ce641927488e3fd39f7ee20ef, type: 3}
 --- !u!114 &661591518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,7 +3063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   price: 300
-  sprite: {fileID: 21300000, guid: 46d05617c4a935a44aa80d22abf9bc09, type: 3}
+  sprite: {fileID: 21300000, guid: a5eccb4d58034314889d9b93ce445610, type: 3}
 --- !u!114 &916632432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6128,17 +6128,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1429071469}
-        m_MethodName: StoreOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 214747849}
         m_MethodName: ProjectileOff
         m_Mode: 1
@@ -6152,6 +6141,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 214747849}
         m_MethodName: ClosePopUP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1429071469}
+        m_MethodName: StoreOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

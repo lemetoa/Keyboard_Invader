@@ -53,6 +53,13 @@ public class VirtualKey : MonoBehaviour
     //키들 활성화/비활성화
     public void SetKeysActive(bool active) {
         children.gameObject.SetActive(active);
+        if (active)
+        {
+            foreach(Transform child in transform)
+            {
+                child.localPosition = Vector2.zero;
+            }
+        }
     }
 
     public void GainTmpKey(KeyCap _key)

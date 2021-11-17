@@ -58,7 +58,7 @@ public class ObjectPooler : MonoBehaviour
     public static T SpawnFromPool<T>(PoolingType tag, Vector3 position, bool active = true) where T : Component
     {
         GameObject obj = inst._SpawnFromPool(tag, position, Quaternion.identity);
-        if(tag == PoolingType.KeyCap)
+        if(tag == PoolingType.KeyCap || tag == PoolingType.VirtualKeyCap)
             obj.transform.localScale = Vector3.one;
         if (obj.TryGetComponent(out T component))
         {

@@ -698,6 +698,7 @@
     <Compile Include="Assets\Scripts\UiDisplay\HoldButton.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\HpBar.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\Score.cs" />
+    <Compile Include="Assets\Scripts\UiDisplay\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\VirtualKey.cs" />
     <Compile Include="Assets\ZG\ZG.Core\Attribute\TableStructAttribute.cs" />
