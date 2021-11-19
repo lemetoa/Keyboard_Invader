@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\UiDisplay\GameResult.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\HoldButton.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\HpBar.cs" />
+    <Compile Include="Assets\Scripts\UiDisplay\InfoPos.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\Score.cs" />
     <Compile Include="Assets\Scripts\UiDisplay\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />

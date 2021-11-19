@@ -30,6 +30,8 @@ public class KeyCap : MonoBehaviour
     int y;
 
     private float enableTime;
+
+    InfoPos infoPos;
     public void SetKeyPad(string code, KeyCode _stand = KeyCode.None)//키패드 속성 변경
     {
         keyPadCode = code;
@@ -96,6 +98,7 @@ public class KeyCap : MonoBehaviour
     protected virtual void Start()
     {
         keycapInfo = GameObject.Find("KeyCapInfoHolder");
+        infoPos = keycapInfo.GetComponent<InfoPos>();
 
         SetKeyPad(keyPadCode, Stand);
 
@@ -286,8 +289,9 @@ public class KeyCap : MonoBehaviour
 
     private void OnMouseOver()
     {
-        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        keycapInfo.transform.position = worldPosition;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // keycapInfo.transform.position = worldPosition;
+        infoPos.SetPos(worldPosition);
     }
 
     private void OnMouseExit()
