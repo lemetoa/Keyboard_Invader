@@ -205,9 +205,12 @@ public class Unit : MonoBehaviour
                 stands.Add(item.Stand);
             }
         }
-        if(cam != null)
+
+        if (cam != null)
         {
-            cam.currSize = stands.Count + cam.startSize - 1;
+            float camSize = stands.Count + cam.startSize - 1;
+            if (camSize <= cam.maxSize)
+                cam.currSize = camSize;
 
         }
         //Debug.Log(sum);

@@ -7,6 +7,7 @@ public class FollowCamera : MonoBehaviour
 {
     public GameObject player;
     public float startSize = 5;
+    public float maxSize = 15;
     [HideInInspector]
     public float currSize;
     public Vector3 storeCameraOffset;
