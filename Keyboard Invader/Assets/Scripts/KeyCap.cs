@@ -236,9 +236,12 @@ public class KeyCap : MonoBehaviour
     private void OnMouseDown()
     {
         
-        Debug.Log("분해");
         
         if (GameState.current != GameStateType.Shopping)
+        {
+            return;
+        }
+        if (!Store.isSelling)
         {
             return;
         }
@@ -248,6 +251,7 @@ public class KeyCap : MonoBehaviour
             if(Datas.GameData.GameDataList[1].intValue > 0) // 구매 아이템 선택시
             {
                 SetKeyPad(Datas.GameData.GameDataList[2].strValue);
+                print("강화");
                 Datas.GameData.GameDataList[0].intValue -= Datas.GameData.GameDataList[1].intValue;
                 Datas.GameData.GameDataList[1].intValue = 0;
                 GameObject cancelBuyButton = GameObject.Find("CancelBuyButton");
@@ -261,6 +265,7 @@ public class KeyCap : MonoBehaviour
             }
             else if (Stand != KeyCode.Space)
             {
+                Debug.Log("분해");
                 //Debug.Log("crashed!");
                 Datas.GameData.GameDataList[0].intValue += getCost;
                 Vector2Int _pos = new Vector2Int((int)transform.localPosition.x, (int)transform.localPosition.y);

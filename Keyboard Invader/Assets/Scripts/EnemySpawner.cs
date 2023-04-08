@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     private static float levelTimer = 0f; //레벨업 타이머
     static float bossTimer;
     [HideInInspector]
-    public static bool isSpawn = false;
+    public static bool isBossSpawn = false;
 
     [HideInInspector]
     public static bool bossKilled;
@@ -114,12 +114,12 @@ public class EnemySpawner : MonoBehaviour
                     levelTimer -= instance.levelUpCycle;
                 }
 
-                if (bossTimer > instance.bossCycle && !isSpawn)
+                if (bossTimer > instance.bossCycle && !isBossSpawn)
                 {
                     bossTimer -= instance.bossCycle;
                     SpawnBoss();
                     StopSpawn();
-                    isSpawn = true;
+                    isBossSpawn = true;
                 }
                 
             }
@@ -158,6 +158,7 @@ public class EnemySpawner : MonoBehaviour
             instance.StopCoroutine(spawnCycle);
             spawnCycle = null;
         }
+        isBossSpawn = false;
         //spawnCycle = SpawnCycle();
         //instance.StartCoroutine(spawnCycle);
 

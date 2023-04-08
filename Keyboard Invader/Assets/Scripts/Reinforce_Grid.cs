@@ -26,7 +26,8 @@ public class Reinforce_Grid : MonoBehaviour
     Image image;
     [SerializeField]
     private Sprite sprite;
-    GameObject cancelBuyButton;
+    [SerializeField]
+    private GameObject cancelBuyButton;
     string keyPadStr;
     void Start()
     {
@@ -39,7 +40,7 @@ public class Reinforce_Grid : MonoBehaviour
         txt.text = price.ToString();
         image = transform.parent.GetChild(0).GetComponent<Image>();
         image.sprite = sprite;
-        cancelBuyButton = transform.parent.parent.parent.GetChild(2).gameObject;
+       // cancelBuyButton = transform.parent.parent.parent.GetChild(2).gameObject;
 
         if (type == Type.Crystal)
         {
@@ -75,7 +76,10 @@ public class Reinforce_Grid : MonoBehaviour
 
             Datas.GameData.GameDataList[2].strValue = keyPadStr;
             //Debug.Log("str값 " + Datas.GameData.GameDataList[2].strValue);
-            Debug.Log(Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description);
+
+            print($"데이터 ={Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description} {gameObject} " );
+
+            //Debug.Log("데이터 ="  + Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description);
             // Datas.GameData.GameDataList[2].strValue 참조해 능력 부여
 
         }

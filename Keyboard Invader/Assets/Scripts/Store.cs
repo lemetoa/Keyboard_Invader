@@ -21,6 +21,11 @@ public class Store : MonoBehaviour
     Unit unit;
     BoxCollider2D box;
 
+    [SerializeField]
+    private GameObject sellingUI;
+    public static bool isSelling = false;//판매중
+
+
     private void Awake()
     {
         if (_go ==null)
@@ -46,7 +51,11 @@ public class Store : MonoBehaviour
         
     }
 
-
+    public void TrySell(bool sell)
+    {
+        isSelling = sell;
+        sellingUI.SetActive(sell);
+    }
     public void ChangeBackground()
     {
         for (int i = 0; i < backgroundParent.childCount; i++)
@@ -101,6 +110,6 @@ public class Store : MonoBehaviour
         this.gameObject.SetActive(false);
         ChangeBackground();
         EnemySpawner.bossKilled = false;
-        EnemySpawner.isSpawn = false;
+        EnemySpawner.isBossSpawn = false;
     }
 }
