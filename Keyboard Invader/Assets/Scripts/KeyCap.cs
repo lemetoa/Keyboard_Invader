@@ -241,17 +241,14 @@ public class KeyCap : MonoBehaviour
         {
             return;
         }
-        if (!Store.isSelling)
-        {
-            return;
-        }
-           
+
+        print($" 강화비용:{Datas.GameData.GameDataList[1].intValue}");
         if (m_Master != null)
         {
-            if(Datas.GameData.GameDataList[1].intValue > 0) // 구매 아이템 선택시
+            if (Datas.GameData.GameDataList[1].intValue > 0) // 구매 아이템 선택시
             {
                 SetKeyPad(Datas.GameData.GameDataList[2].strValue);
-                print("강화");
+
                 Datas.GameData.GameDataList[0].intValue -= Datas.GameData.GameDataList[1].intValue;
                 Datas.GameData.GameDataList[1].intValue = 0;
                 GameObject cancelBuyButton = GameObject.Find("CancelBuyButton");
@@ -263,7 +260,7 @@ public class KeyCap : MonoBehaviour
                     keycapInfo.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(Datas.KeyPadData.KeyPadDataMap[keyPadCode].sprite);
                 }
             }
-            else if (Stand != KeyCode.Space)
+            else if (Stand != KeyCode.Space && Store.isSelling)
             {
                 Debug.Log("분해");
                 //Debug.Log("crashed!");

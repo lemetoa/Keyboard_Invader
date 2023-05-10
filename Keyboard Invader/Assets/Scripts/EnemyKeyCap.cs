@@ -210,6 +210,9 @@ public class EnemyKeyCap : MonoBehaviour
 
             if (currentLife <= 0)
             {
+                //죽음
+                Datas.GameData.GameDataList[0].intValue += 30;
+
                 KeyCap key = ObjectPooler.SpawnFromPool<KeyCap>(ObjectPooler.PoolingType.KeyCap, transform.position, true);
 
                 //랜덤드랍

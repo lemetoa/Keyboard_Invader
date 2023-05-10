@@ -77,7 +77,7 @@ public class Reinforce_Grid : MonoBehaviour
             Datas.GameData.GameDataList[2].strValue = keyPadStr;
             //Debug.Log("str값 " + Datas.GameData.GameDataList[2].strValue);
 
-            print($"데이터 ={Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description} {gameObject} " );
+            print($"데이터 ={Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description} {gameObject} 가격:{price} " );
 
             //Debug.Log("데이터 ="  + Datas.KeyPadData.KeyPadDataMap[keyPadStr].Description);
             // Datas.GameData.GameDataList[2].strValue 참조해 능력 부여

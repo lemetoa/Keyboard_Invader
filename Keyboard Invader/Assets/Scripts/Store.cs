@@ -9,6 +9,9 @@ public class Store : MonoBehaviour
     {
         return _go;
     }
+
+    [SerializeField]
+    private float camSize = 5f;
     public OnClick uiMgr;
     FollowCamera cam;
     [SerializeField]
@@ -62,8 +65,8 @@ public class Store : MonoBehaviour
         {
             if (backgroundParent.GetChild(i).TryGetComponent(out Renderer _render))
             {
-                Debug.Log("메터리얼 " + level % 3);
-                _render.material = material[level % 3];
+                //Debug.Log("메터리얼 " + level % material.Length);
+                _render.material = material[level % material.Length];
             }  
         }
         level++;
@@ -89,7 +92,7 @@ public class Store : MonoBehaviour
         unit.gameObject.transform.localScale = unit.gameObject.transform.localScale / Mathf.Sqrt(unit.stands.Count);
         box.enabled = false;
         Time.timeScale = 0;
-        Camera.main.orthographicSize = 1.5f;
+        Camera.main.orthographicSize = camSize;
         tmpKey.SetActive(false);
 
         if (unit.stands.Count > 1)
